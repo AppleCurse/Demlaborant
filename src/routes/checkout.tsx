@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart } from "@/demlab/context/CartContext";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "@tanstack/react-router";
+import { createOrder } from "@/demlab/api.functions";
 import {
   CreditCard,
   Building2,
@@ -19,7 +20,8 @@ import {
 import { Link } from "@tanstack/react-router";
 
 function CheckoutPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
+  const [submitError, setSubmitError] = useState("");
   const { items, subtotal, vatAmount, shippingFee, grandTotal, clearCart } = useCart();
 
   const [paymentMethod, setPaymentMethod] = useState<"card" | "transfer" | "corporate">("card");
@@ -42,15 +44,32 @@ function CheckoutPage() {
     cardCvc: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    setTimeout(() => {
-      const orderNumber = "DLM-" + Math.floor(100000 + Math.random() * 900000);
+    setSubmitError("");
+    try {
+      const res = await createOrder({
+        data: {
+          items: items.map((i) => ({ name: i.name, size: i.size, price: i.price, quantity: i.quantity })),
+          total: grandTotal,
+          fullName: form.fullName,
+          phone: form.phone,
+          email: form.email,
+          city: form.city,
+          district: form.district,
+          address: form.address,
+          deliveryType: "cargo",
+          paymentType: paymentMethod,
+          notes: [form.deliveryNotes, invoiceType === "corporate" ? `Fatura: ${form.companyName} / ${form.taxOffice} / ${form.taxNumber}` : ""].filter(Boolean).join(" | "),
+        },
+      });
       clearCart();
-      router.push(`/order-success?orderNo=${orderNumber}&total=${grandTotal}`);
-    }, 1200);
+      navigate({ to: "/order-success", search: { orderNo: res.orderNo, total: String(grandTotal) } });
+    } catch {
+      setSubmitError("Sipariş kaydedilemedi. Lütfen bilgileri kontrol edip tekrar deneyin.");
+      setIsSubmitting(false);
+    }
   };
 
   if (items.length === 0) {

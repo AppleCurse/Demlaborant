@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2, Send, Building2, User, Mail, Phone, MapPin, Sparkles } from "lucide-react";
 import { products } from "@/demlab/data/products";
+import { createInquiry } from "@/demlab/api.functions";
 
 export default function InquiryForm({ defaultProduct = "" }: { defaultProduct?: string }) {
   const [submitted, setSubmitted] = useState(false);
@@ -24,7 +25,18 @@ export default function InquiryForm({ defaultProduct = "" }: { defaultProduct?: 
       alert("Lütfen KVKK aydınlatma metnini onaylayınız.");
       return;
     }
-    setSubmitted(true);
+    createInquiry({
+      data: {
+        name: formData.contactName,
+        company: formData.companyName,
+        email: formData.email,
+        phone: formData.phone,
+        product: `${formData.productName} — ${formData.quantity}`,
+        message: [formData.city, formData.taxOffice, formData.taxNumber, formData.notes].filter(Boolean).join(" | "),
+      },
+    })
+      .then(() => setSubmitted(true))
+      .catch(() => alert("Talebiniz gönderilemedi, lütfen tekrar deneyin."));
   };
 
   if (submitted) {

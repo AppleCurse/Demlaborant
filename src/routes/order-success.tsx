@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useSearchParams } from "next/navigation";
 import { Link } from "@tanstack/react-router";
 import { CheckCircle2, Truck, Package, Phone, FileText, ArrowRight, Sparkles } from "lucide-react";
 import { Suspense } from "react";
 
 function OrderSuccessContent() {
-  const searchParams = useSearchParams();
-  const orderNo = searchParams.get("orderNo") || "DLM-982144";
-  const total = searchParams.get("total") || "0";
+  const { orderNo = "", total = "0" } = Route.useSearch();
 
   return (
     <div className="max-w-2xl mx-auto oak-card rounded-3xl p-8 sm:p-12 text-center space-y-6">
@@ -102,6 +99,7 @@ function OrderSuccessPage() {
 }
 
 export const Route = createFileRoute("/order-success")({
+  validateSearch: (s: Record<string, unknown>) => ({ orderNo: typeof s.orderNo === "string" ? s.orderNo : undefined, total: s.total != null ? String(s.total) : undefined }),
   head: () => ({ meta: [] }),
   component: OrderSuccessPage,
 });

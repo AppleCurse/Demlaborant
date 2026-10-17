@@ -16,6 +16,10 @@ import {
 } from "lucide-react";
 import { DemlabMark, SectionMark, WaxSeal } from "./marks";
 import DilutionVessel from "./DilutionVessel";
+import { getDistricts, lookupLot as lookupLotFn, createOrder } from "@/demlab/api.functions";
+import heroPlate from "@/assets/hero-plate.jpg";
+import coaPlate from "@/assets/coa-plate.jpg";
+import packagePlate from "@/assets/package-plate.jpg";
 
 type PackageItem = {
   id: string;
@@ -155,11 +159,10 @@ export default function DemlabLanding() {
   // --- data ---
   useEffect(() => {
     let alive = true;
-    fetch("/api/districts")
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("bad response"))))
-      .then((data: { districts?: District[] }) => {
-        if (alive && Array.isArray(data.districts) && data.districts.length) {
-          setDistricts(data.districts);
+    getDistricts()
+      .then((rows) => {
+        if (alive && rows.length) {
+          setDistricts(rows);
         }
       })
       .catch(() => {
@@ -182,10 +185,7 @@ export default function DemlabLanding() {
     }
     setLotState({ status: "loading" });
     try {
-      const res = await fetch(`/api/lots?code=${encodeURIComponent(clean)}`);
-      const data = (await res.json()) as
-        | { found: true; lot: LotRecord }
-        | { found: false; error: string };
+      const data = await lookupLotFn({ data: { code: clean } });
       if (data.found) setLotState({ status: "found", lot: data.lot });
       else setLotState({ status: "error", message: data.error });
     } catch {
@@ -404,7 +404,7 @@ export default function DemlabLanding() {
                 >
                   {heroOk ? (
                     <img
-                      src="images/hero-plate.jpg"
+                      src={heroPlate}
                       alt="Mühürlü amber laboratuvar cam şişesi, küçük bal kabağı ve cam terlik — gravür plaka"
                       className="h-[420px] w-full object-cover object-center sm:h-[500px]"
                       onError={() => setHeroOk(false)}
@@ -992,7 +992,7 @@ export default function DemlabLanding() {
                 >
                   {coaOk ? (
                     <img
-                      src="images/coa-plate.jpg"
+                      src={coaPlate}
                       alt="Mühürlü analiz föyü, büyütme camı ve pipet — arşiv natürmort"
                       className="h-full min-h-[364px] w-full object-cover"
                       onError={() => setCoaOk(false)}
@@ -1071,7 +1071,7 @@ export default function DemlabLanding() {
               >
                 {pkgOk ? (
                   <img
-                    src="images/package-plate.jpg"
+                    src={packagePlate}
                     alt="Mühürlü HDPE bidon — katalog gravürü"
                     className="h-[320px] w-full object-cover"
                     onError={() => setPkgOk(false)}
