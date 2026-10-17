@@ -119,7 +119,7 @@ export const createInquiry = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     const db = await admin();
-    const { error } = await db.from("inquiries").insert({ ...data, message: data.message || "-" });
+    const { error } = await db.from("inquiries").insert({ name: data.name, company: data.company ?? null, email: data.email ?? null, phone: data.phone ?? null, product: data.product ?? null, message: data.message || "-" });
     if (error) throw new Error("Talep kaydedilemedi.");
     return { ok: true };
   });

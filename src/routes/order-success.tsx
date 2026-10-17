@@ -99,7 +99,7 @@ function OrderSuccessPage() {
 }
 
 export const Route = createFileRoute("/order-success")({
-  validateSearch: (s: Record<string, unknown>) => ({ orderNo: typeof s.orderNo === "string" ? s.orderNo : undefined, total: s.total != null ? String(s.total) : undefined }),
+  validateSearch: (s: Record<string, unknown>) => ({ orderNo: typeof s['orderNo'] === "string" ? s['orderNo'] : undefined, total: s['total'] != null ? String(s['total']) : undefined }),
   head: () => ({ meta: [] }),
   component: OrderSuccessPage,
 });

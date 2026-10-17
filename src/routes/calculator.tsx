@@ -193,7 +193,7 @@ function CalculatorPage() {
 
           <div className="pt-2">
             <Link
-              to="/products/96-laboratuvar-cozeltisi-ozel-fermantasyon"
+              to="/products/$slug" params={{ slug: "96-laboratuvar-cozeltisi-ozel-fermantasyon" }}
               className="w-full inline-flex items-center justify-center gap-2 btn-amber font-bold py-3.5 px-4 rounded-xl shadow-lg transition text-xs"
             >
               <span>%96 Çözelti Sipariş Et (5L/10L/20L)</span>

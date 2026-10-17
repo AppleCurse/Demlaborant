@@ -117,7 +117,7 @@ export default function DemlabLanding() {
   // --- state ---
   const [pkgId, setPkgId] = useState("pkg-10l");
   const selected = useMemo(
-    () => PACKAGES.find((p) => p.id === pkgId) ?? PACKAGES[1],
+    () => PACKAGES.find((p) => p.id === pkgId) ?? PACKAGES[1]!,
     [pkgId],
   );
 
@@ -175,7 +175,7 @@ export default function DemlabLanding() {
 
   const solutionNeeded = Number(((targetABV * targetVolume) / 96).toFixed(2));
   const waterNeeded = Number((targetVolume - solutionNeeded).toFixed(2));
-  const activeDistrict = districts.find((d) => d.name === district) ?? districts[0];
+  const activeDistrict = districts.find((d) => d.name === district) ?? districts[0]!;
 
   async function lookupLot(code: string) {
     const clean = code.trim().toUpperCase();

@@ -76,7 +76,7 @@ export default function Header() {
           {navigation.map((item) => (
             <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               className="hover:text-[#f3bd68] transition-colors py-1 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-[#e59840] after:absolute after:bottom-0 after:left-0 after:transition-all"
             >
               {item.name}
@@ -125,7 +125,7 @@ export default function Header() {
           {navigation.map((item) => (
             <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 rounded-md text-sm font-medium text-[#f0ded0] hover:bg-[#28160d] hover:text-[#f3bd68] transition"
             >
