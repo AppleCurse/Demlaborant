@@ -421,13 +421,13 @@ function CheckoutPage() {
               </div>
             </div>
 
+            {submitError && <p className="text-xs text-red-400">{submitError}</p>}
             <button
               type="submit"
               disabled={isSubmitting}
               className="w-full inline-flex items-center justify-center gap-2 btn-amber disabled:opacity-50 font-bold py-3.5 px-6 rounded-xl shadow-lg transition text-sm active:scale-[0.99]"
             >
               <PackageCheck className="w-5 h-5" />
-              {submitError && <p className="text-xs text-red-400">{submitError}</p>}
               <span>{isSubmitting ? "Sipariş Hazırlanıyor..." : "Siparişi Onayla & Kapıma Getir"}</span>
             </button>
 

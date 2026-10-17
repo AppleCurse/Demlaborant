@@ -1,36 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { trackOrder } from "@/demlab/api.functions";
 import { Search, Truck, Package, Clock, CheckCircle2, AlertCircle, MapPin, Sparkles } from "lucide-react";
 
 function TrackingPage() {
   const [query, setQuery] = useState("");
-  const [searched, setSearched] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [notFoundMsg, setNotFoundMsg] = useState("");
+  const [result, setResult] = useState<Awaited<ReturnType<typeof trackOrder>>>(null);
+  const searched = !!result;
 
-  const mockResult = {
-    orderNo: query.toUpperCase() || "DLM-849201",
-    status: "Yolda - Mühürlü Sevkiyat",
-    date: "Bugün",
-    estimatedDelivery: "Bugün 16:30'a kadar",
-    carrier: "DEMLAB Özel Lojistik Getirim Aracı (34 DLM 92)",
-    address: "Kadıköy Zanaat Vadisi -> Alıcı Adresi",
-    items: [
-      { name: "%96 Laboratuvar Çözeltisi (Özel Fermantasyon Tipi)", size: "20 L HDPE Bidon", qty: 1 },
-      { name: "Propilen Glikol (USP / Farma Derece)", size: "5 L Bidon", qty: 1 }
-    ],
-    timeline: [
-      { title: "Sipariş Onaylandı & Fatura Düzenlendi", time: "09:15", done: true },
-      { title: "Atölyede Hazırlandı, Lot Güvenlik Mührü & Analiz Sertifikası (CoA) Eklendi", time: "10:30", done: true },
-      { title: "Sevkiyat Aracına Yüklendi", time: "11:45", done: true },
-      { title: "Mühürlü Teslimat İçin Yolda", time: "13:30", active: true },
-      { title: "Adrese Teslim Edildi", time: "Tahmini 16:30", done: false }
-    ]
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setNotFoundMsg("");
+    setResult(null);
+    try {
+      const r = await trackOrder({ data: { orderNo: query, phone } });
+      if (!r) setNotFoundMsg("Bu sipariş numarası ve telefon ile eşleşen bir kayıt bulunamadı.");
+      setResult(r);
+    } catch {
+      setNotFoundMsg("Sorgulama yapılamadı, lütfen bilgileri kontrol edin.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query) {
-      setSearched(true);
-    }
+  const steps = ["SİPARİŞ ALINDI", "MÜHÜRLENİYOR", "KURYE BEKLİYOR", "YOLDA", "TESLİM EDİLDİ"];
+  const current = Math.max(0, steps.indexOf(result?.status ?? ""));
+  const mockResult = result && {
+    orderNo: result.orderNo,
+    status: result.status,
+    estimatedDelivery: result.deliveryType === "courier" ? "Bugün (motokurye)" : "1-3 iş günü (kargo)",
+    carrier: result.deliveryType === "courier" ? "DEMLAB İstanbul Motokurye" : "Anlaşmalı Mühürlü Kargo",
+    address: `Kadıköy Zanaat Vadisi -> ${result.location || "Alıcı Adresi"}`,
+    items: result.items.map((i) => ({ name: i.name, size: i.size, qty: i.quantity })),
+    timeline: [
+      "Sipariş Onaylandı & Fatura Düzenlendi",
+      "Lot Güvenlik Mührü & Analiz Sertifikası (CoA) Eklendi",
+      "Sevkiyat Aracına Yükleniyor",
+      "Mühürlü Teslimat İçin Yolda",
+      "Adrese Teslim Edildi",
+    ].map((title, i) => ({
+      title,
+      time: i === 0 ? new Date(result.createdAt).toLocaleString("tr-TR") : "",
+      done: i < Math.max(current, 1),
+      active: i === Math.max(current, 1),
+    })),
   };
 
   return (
@@ -43,7 +60,7 @@ function TrackingPage() {
           Canlı Kargo & Getirim Takibi
         </h1>
         <p className="text-xs sm:text-sm text-[#c6ad97]">
-          Sipariş onayınızda iletilen <strong className="text-[#f3bd68]">DLM-XXXXXX</strong> kodunu veya telefon numaranızı girerek fermantasyon sevkiyatınızın anlık konumunu sorgulayın.
+          Sipariş onayınızda iletilen <strong className="text-[#f3bd68]">DLM-XXXXXX</strong> kodunu ve telefon numaranızı girerek fermantasyon sevkiyatınızın anlık konumunu sorgulayın.
         </p>
       </div>
 
@@ -54,14 +71,23 @@ function TrackingPage() {
           <input
             type="text"
             required
-            placeholder="Örn: DLM-982144 veya 0532..."
+            placeholder="Sipariş No: DLM-982144"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full text-xs pl-10 pr-4 py-3 rounded-xl border border-[#442616] bg-[#180d07] text-[#f7ede2] outline-none focus:border-[#e59840]"
           />
         </div>
+        <input
+          type="tel"
+          required
+          placeholder="Telefon"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-36 text-xs px-4 py-3 rounded-xl border border-[#442616] bg-[#180d07] text-[#f7ede2] outline-none focus:border-[#e59840]"
+        />
         <button
           type="submit"
+          disabled={loading}
           className="btn-amber text-xs font-bold px-5 py-3 rounded-xl transition shadow"
         >
           Sorgula
@@ -69,7 +95,8 @@ function TrackingPage() {
       </form>
 
       {/* Sonuç Kartı */}
-      {searched && (
+      {notFoundMsg && <p className="text-center text-xs text-red-400">{notFoundMsg}</p>}
+      {searched && mockResult && (
         <div className="oak-card rounded-3xl p-6 sm:p-8 space-y-8 animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-[#3e2315]">
             <div>
