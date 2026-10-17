@@ -14,7 +14,156 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      districts: {
+        Row: {
+          courier_eligible: boolean
+          eta_max: number
+          eta_min: number
+          id: number
+          name: string
+          note: string | null
+        }
+        Insert: {
+          courier_eligible?: boolean
+          eta_max: number
+          eta_min: number
+          id?: number
+          name: string
+          note?: string | null
+        }
+        Update: {
+          courier_eligible?: boolean
+          eta_max?: number
+          eta_min?: number
+          id?: number
+          name?: string
+          note?: string | null
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string | null
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          product: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          product?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          product?: string | null
+        }
+        Relationships: []
+      }
+      lots: {
+        Row: {
+          abv: string
+          heavy_metals: string
+          id: number
+          lot_code: string
+          method: string
+          residue: string
+          status: string
+          test_date: string
+          volatile_acidity: string
+        }
+        Insert: {
+          abv: string
+          heavy_metals: string
+          id?: number
+          lot_code: string
+          method: string
+          residue: string
+          status?: string
+          test_date: string
+          volatile_acidity: string
+        }
+        Update: {
+          abv?: string
+          heavy_metals?: string
+          id?: number
+          lot_code?: string
+          method?: string
+          residue?: string
+          status?: string
+          test_date?: string
+          volatile_acidity?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          address: string
+          city: string
+          created_at: string
+          delivery_type: string
+          district: string | null
+          email: string | null
+          full_name: string
+          id: string
+          items: Json
+          notes: string | null
+          order_no: string
+          payment_type: string
+          phone: string
+          status: string
+          total: number
+        }
+        Insert: {
+          address: string
+          city?: string
+          created_at?: string
+          delivery_type?: string
+          district?: string | null
+          email?: string | null
+          full_name: string
+          id?: string
+          items?: Json
+          notes?: string | null
+          order_no: string
+          payment_type?: string
+          phone: string
+          status?: string
+          total?: number
+        }
+        Update: {
+          address?: string
+          city?: string
+          created_at?: string
+          delivery_type?: string
+          district?: string | null
+          email?: string | null
+          full_name?: string
+          id?: string
+          items?: Json
+          notes?: string | null
+          order_no?: string
+          payment_type?: string
+          phone?: string
+          status?: string
+          total?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
