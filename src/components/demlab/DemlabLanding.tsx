@@ -197,30 +197,23 @@ export default function DemlabLanding() {
     e.preventDefault();
     setOrderState({ status: "sending" });
     try {
-      const res = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          packageId: selected.id,
+      if (form.fullName.trim().length < 3 || form.phone.trim().length < 7 || form.address.trim().length < 8) {
+        setOrderState({ status: "error", message: "Lütfen ad soyad, telefon ve açık adres alanlarını eksiksiz doldurun." });
+        return;
+      }
+      const data = await createOrder({
+        data: {
+          items: [{ name: "%96 Laboratuvar Çözeltisi", size: `${selected.volume} L`, price: selected.price, quantity: 1 }],
+          total: selected.price,
           fullName: form.fullName,
           phone: form.phone,
           city: form.city,
           district: form.district,
           address: form.address,
-          deliveryType,
+          deliveryType: deliveryType === "courier" ? "courier" : "cargo",
           paymentType,
-        }),
+        },
       });
-      const data = (await res.json()) as
-        | { orderNo: string }
-        | { error: string };
-      if (!res.ok || "error" in data) {
-        setOrderState({
-          status: "error",
-          message: "error" in data ? data.error : "Sipariş kaydı oluşturulamadı.",
-        });
-        return;
-      }
       setOrderState({
         status: "done",
         orderNo: data.orderNo,
