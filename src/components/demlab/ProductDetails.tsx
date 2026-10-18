@@ -24,6 +24,9 @@ export default function ProductDetails({ product }: { product: Product }) {
   );
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"buy" | "inquiry">("buy");
+  const [selectedImage, setSelectedImage] = useState(0);
+  const images = product.images ?? [];
+  const activeImage = images[selectedImage] ?? images[0];
 
   const handleAddToCart = () => {
     addToCart(
@@ -93,6 +96,61 @@ export default function ProductDetails({ product }: { product: Product }) {
           </div>
         </div>
       </div>
+
+      {activeImage && (
+        <section
+          aria-label="Ürün görselleri"
+          className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8"
+        >
+          <figure className="overflow-hidden rounded-2xl border border-[#e59840]/25 bg-[#130b06] lg:col-span-8">
+            <img
+              src={activeImage.src}
+              alt={activeImage.alt}
+              className="h-[320px] w-full object-contain sm:h-[460px] lg:h-[540px]"
+            />
+            <figcaption className="border-t border-[#e59840]/20 px-4 py-3 text-xs text-[#c6ad97]">
+              {activeImage.caption}
+            </figcaption>
+          </figure>
+
+          <div className="lg:col-span-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e59840]">
+              DEMLAB 96° · Görsel galeri
+            </p>
+            <h2 className="mt-3 text-xl font-bold text-[#fff5ea] font-serif">
+              Ambalajı ve laboratuvar kullanımını keşfedin
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-[#c6ad97]">
+              Ürün ve laboratuvar görselleri arasında geçiş yaparak farklı detaylara göz atın.
+            </p>
+
+            <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-3">
+              {images.map((image, index) => (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={() => setSelectedImage(index)}
+                  aria-label={`Görsel ${index + 1}: ${image.caption}`}
+                  aria-pressed={selectedImage === index}
+                  className={`overflow-hidden rounded-lg border-2 bg-[#f9f8f5] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f3bd68] ${
+                    selectedImage === index
+                      ? "border-[#e59840]"
+                      : "border-transparent hover:border-[#e59840]/50"
+                  }`}
+                >
+                  <img
+                    src={image.src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* İki Kolonlu Detay Alanı */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

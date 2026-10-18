@@ -63,9 +63,9 @@ function OrderSuccessContent() {
         <div className="p-3.5 bg-[#1a0e08] rounded-xl border border-[#3e2315] space-y-1">
           <div className="text-[#e59840] font-bold text-xs flex items-center gap-1">
             <FileText className="w-3.5 h-3.5" />
-            <span>3. Fatura & CoA</span>
+            <span>3. Kapıda Ödeme</span>
           </div>
-          <p className="text-[11px] text-[#baa08a]">Analiz raporunuz e-posta ile de iletildi.</p>
+          <p className="text-[11px] text-[#baa08a]">Sipariş tutarını teslimat sırasında seçtiğiniz yöntemle kuryeye ödeyin.</p>
         </div>
       </div>
 

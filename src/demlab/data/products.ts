@@ -1,7 +1,21 @@
+import productLineupImage from "@/assets/demlab-96-pack-lineup.webp";
+import product5LImage from "@/assets/demlab-96-pack-5l.webp";
+import product5LPortraitImage from "@/assets/demlab-96-pack-5l-portrait.webp";
+import product20LImage from "@/assets/demlab-96-pack-20l.jpg";
+import glasswareImage from "@/assets/demlab-96-glassware.jpg";
+import certificateImage from "@/assets/demlab-analysis-certificate.jpg";
+import labHandlingImage from "@/assets/demlab-lab-handling.jpg";
+
 export type PackagingOption = {
   size: string;
   price: number; // TL cinsinden KDV hariç veya dahil birim fiyat
   inStock: boolean;
+};
+
+export type ProductImage = {
+  src: string;
+  alt: string;
+  caption: string;
 };
 
 export type Product = {
@@ -23,6 +37,7 @@ export type Product = {
   specifications: Record<string, string>;
   applications: string[];
   safetyNotes: string[];
+  images?: ProductImage[];
   isFeatured?: boolean;
 };
 
@@ -246,6 +261,43 @@ export const products: Product[] = [
     shortDescription: "Özel fermantasyon prosesleriniz, biyokimyasal reaksiyonlar ve hassas laboratuvar çalışmaları için yüksek saflıkta %96'lık çözelti.",
     description:
       "Özel fermantasyon çalışmaları, botanik ekstraksiyon prosesleri ve analitik laboratuvar uygulamaları için özel olarak formüle edilmiş yüksek saflıkta %96 teknik laboratuvar çözeltisi. Homojen yapısı, kontrollü saflığı ve tortusuz içeriğiyle hassas fermantasyon ortamlarında maksimum verim sağlar.",
+    images: [
+      {
+        src: product5LImage,
+        alt: "Demlab %96 laboratuvar çözeltisi için 5 litrelik mühürlü HDPE ambalaj",
+        caption: "5 L mühürlü HDPE bidon",
+      },
+      {
+        src: productLineupImage,
+        alt: "Demlab %96 laboratuvar çözeltisinin farklı ambalaj boyları",
+        caption: "DemlaB ambalaj serisi · temsili görsel",
+      },
+      {
+        src: product5LPortraitImage,
+        alt: "Demlab etiketli beyaz HDPE laboratuvar bidonu",
+        caption: "Demlab 96° · laboratuvar çözeltisi",
+      },
+      {
+        src: product20LImage,
+        alt: "Demlab %96 laboratuvar çözeltisi için 20 litrelik HDPE bidon",
+        caption: "20 L HDPE bidon",
+      },
+      {
+        src: glasswareImage,
+        alt: "Demlab 96° etiketli cam şişe ve beher",
+        caption: "Cam laboratuvar ekipmanında Demlab 96°",
+      },
+      {
+        src: labHandlingImage,
+        alt: "Laborantın eldivenle Demlab 96° işaretli beherde numune ölçümü",
+        caption: "Laboratuvarda numune ölçümü",
+      },
+      {
+        src: certificateImage,
+        alt: "Mühürlü laboratuvar analiz sertifikası ve numune tüpü",
+        caption: "Laboratuvar analiz sertifikası · temsili görsel",
+      },
+    ],
     casNo: "64-17-5",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",

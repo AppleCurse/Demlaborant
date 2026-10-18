@@ -4,18 +4,13 @@ import { useCart } from "@/demlab/context/CartContext";
 import { useNavigate } from "@tanstack/react-router";
 import { createOrder } from "@/demlab/api.functions";
 import {
-  CreditCard,
+  Banknote,
   Building2,
-  Truck,
   CheckCircle2,
-  ShieldCheck,
-  ArrowRight,
-  PackageCheck,
-  User,
-  Phone,
-  Mail,
+  CreditCard,
   MapPin,
-  Sparkles
+  PackageCheck,
+  Truck,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
@@ -24,7 +19,7 @@ function CheckoutPage() {
   const [submitError, setSubmitError] = useState("");
   const { items, subtotal, vatAmount, shippingFee, grandTotal, clearCart } = useCart();
 
-  const [paymentMethod, setPaymentMethod] = useState<"card" | "transfer" | "corporate">("card");
+  const [paymentMethod, setPaymentMethod] = useState<"door-card" | "door-cash">("door-card");
   const [invoiceType, setInvoiceType] = useState<"corporate" | "individual">("individual");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -39,9 +34,6 @@ function CheckoutPage() {
     companyName: "",
     taxOffice: "",
     taxNumber: "",
-    cardNumber: "",
-    cardExp: "",
-    cardCvc: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -278,99 +270,55 @@ function CheckoutPage() {
             )}
           </section>
 
-          {/* 3. Ödeme Yöntemi */}
+          {/* 3. Kapıda Ödeme */}
           <section className="oak-card rounded-3xl p-6 sm:p-8 space-y-4">
             <h2 className="text-base font-bold text-[#fef5ec] font-serif flex items-center gap-2">
-              <CreditCard className="w-5 h-5 text-[#e59840]" />
-              <span>3. Ödeme Yöntemi Seçimi</span>
+              <Truck className="w-5 h-5 text-[#e59840]" />
+              <span>3. Kapıda Ödeme Yöntemi</span>
             </h2>
+            <p className="text-xs text-[#baa08a]">
+              Online ödeme alınmaz. Ödemeyi teslimat sırasında kuryeye yaparsınız.
+            </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button
                 type="button"
-                onClick={() => setPaymentMethod("card")}
+                aria-pressed={paymentMethod === "door-card"}
+                onClick={() => setPaymentMethod("door-card")}
                 className={`p-4 rounded-xl border text-left transition ${
-                  paymentMethod === "card"
+                  paymentMethod === "door-card"
                     ? "border-[#e59840] bg-[#e59840]/15 ring-1 ring-[#e59840]"
                     : "border-[#3e2315] bg-[#180d07] hover:border-[#5a341e]"
                 }`}
               >
-                <div className="font-bold text-xs text-[#fef5ec] font-serif">Kredi / Banka Kartı</div>
-                <div className="text-[11px] text-[#baa08a] mt-1">3D Secure ile Güvenli Onay</div>
+                <div className="flex items-center gap-2 font-bold text-xs text-[#fef5ec] font-serif">
+                  <CreditCard className="w-4 h-4 text-[#e59840]" />
+                  Kapıda kredi / banka kartı
+                </div>
+                <div className="text-[11px] text-[#baa08a] mt-1">Kart bilgisi bu sitede istenmez.</div>
               </button>
 
               <button
                 type="button"
-                onClick={() => setPaymentMethod("transfer")}
+                aria-pressed={paymentMethod === "door-cash"}
+                onClick={() => setPaymentMethod("door-cash")}
                 className={`p-4 rounded-xl border text-left transition ${
-                  paymentMethod === "transfer"
+                  paymentMethod === "door-cash"
                     ? "border-[#e59840] bg-[#e59840]/15 ring-1 ring-[#e59840]"
                     : "border-[#3e2315] bg-[#180d07] hover:border-[#5a341e]"
                 }`}
               >
-                <div className="font-bold text-xs text-[#fef5ec] font-serif">Havale / EFT</div>
-                <div className="text-[11px] text-[#f3bd68] font-bold mt-1">%3 Ek İndirim</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setPaymentMethod("corporate")}
-                className={`p-4 rounded-xl border text-left transition ${
-                  paymentMethod === "corporate"
-                    ? "border-[#e59840] bg-[#e59840]/15 ring-1 ring-[#e59840]"
-                    : "border-[#3e2315] bg-[#180d07] hover:border-[#5a341e]"
-                }`}
-              >
-                <div className="font-bold text-xs text-[#fef5ec] font-serif">Cari / Özel Teklif</div>
-                <div className="text-[11px] text-[#baa08a] mt-1">Atölyelere Özel Düzen</div>
+                <div className="flex items-center gap-2 font-bold text-xs text-[#fef5ec] font-serif">
+                  <Banknote className="w-4 h-4 text-[#e59840]" />
+                  Kapıda nakit
+                </div>
+                <div className="text-[11px] text-[#baa08a] mt-1">Ödeme teslimat anında yapılır.</div>
               </button>
             </div>
 
-            {paymentMethod === "card" && (
-              <div className="pt-2 space-y-4 bg-[#180d07] p-4 rounded-xl border border-[#3e2315]">
-                <div>
-                  <label className="block text-xs font-semibold text-[#d8c2ad] mb-1">Kart Numarası *</label>
-                  <input
-                    type="text"
-                    placeholder="0000 0000 0000 0000"
-                    value={form.cardNumber}
-                    onChange={(e) => setForm({ ...form, cardNumber: e.target.value })}
-                    className="w-full text-xs rounded-lg border border-[#442616] p-2.5 bg-[#120804] text-[#f7ede2]"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-[#d8c2ad] mb-1">Son Kullanma (AA/YY) *</label>
-                    <input
-                      type="text"
-                      placeholder="12/28"
-                      value={form.cardExp}
-                      onChange={(e) => setForm({ ...form, cardExp: e.target.value })}
-                      className="w-full text-xs rounded-lg border border-[#442616] p-2.5 bg-[#120804] text-[#f7ede2]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-[#d8c2ad] mb-1">CVV / Güvenlik Kodu *</label>
-                    <input
-                      type="text"
-                      placeholder="123"
-                      value={form.cardCvc}
-                      onChange={(e) => setForm({ ...form, cardCvc: e.target.value })}
-                      className="w-full text-xs rounded-lg border border-[#442616] p-2.5 bg-[#120804] text-[#f7ede2]"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {paymentMethod === "transfer" && (
-              <div className="p-4 bg-[#1e1109] rounded-xl border border-[#e59840]/30 text-xs text-[#ffd79a] space-y-1">
-                <strong>Garanti BBVA / İş Bankası Kurumsal IBAN</strong>
-                <p>Sipariş onayınızın ardından sipariş numaranızı açıklama kısmına ekleyerek ödemeyi tamamlayabilirsiniz. Dekontunuz onaylandığında sevkiyat başlatılır.</p>
-              </div>
-            )}
+            <p className="text-[11px] text-[#8e7460]">
+              Kapıda kartla tahsilat, seçilen kurye/kargo hizmetinin bu seçeneği desteklemesine bağlıdır.
+            </p>
           </section>
         </div>
 
