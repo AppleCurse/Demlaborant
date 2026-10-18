@@ -56,7 +56,7 @@ export const createOrder = createServerFn({ method: "POST" })
       district: z.string().trim().max(60).optional(),
       address: z.string().trim().min(8).max(500),
       deliveryType: z.enum(["courier", "cargo"]).default("cargo"),
-      paymentType: z.string().max(30).default("door-card"),
+      paymentType: z.enum(["door-card", "door-cash"]).default("door-card"),
       notes: z.string().max(1000).optional(),
     }),
   )

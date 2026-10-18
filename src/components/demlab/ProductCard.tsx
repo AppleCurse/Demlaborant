@@ -35,6 +35,23 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group relative flex flex-col oak-card rounded-2xl transition-all duration-300 overflow-hidden">
+      {product.images?.[0] && (
+        <Link
+          to="/products/$slug"
+          params={{ slug: product.slug }}
+          className="block overflow-hidden bg-[#f9f8f5]"
+          aria-label={`${product.name} görsellerini incele`}
+        >
+          <img
+            src={product.images[0].src}
+            alt={product.images[0].alt}
+            loading="lazy"
+            decoding="async"
+            className="aspect-[16/10] w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        </Link>
+      )}
+
       {/* Üst Kategori & Durum */}
       <div className="p-5 pb-0 flex items-start justify-between gap-2">
         <span className={`inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full border ${getBadgeColor(product.category)}`}>

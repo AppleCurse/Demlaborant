@@ -17,9 +17,9 @@ import {
 import { DemlabMark, SectionMark, WaxSeal } from "./marks";
 import DilutionVessel from "./DilutionVessel";
 import { getDistricts, lookupLot as lookupLotFn, createOrder } from "@/demlab/api.functions";
-import heroPlate from "@/assets/hero-plate.jpg";
-import coaPlate from "@/assets/coa-plate.jpg";
-import packagePlate from "@/assets/package-plate.jpg";
+import heroImage from "@/assets/demlab-magic-hero.jpg";
+import certificateImage from "@/assets/demlab-analysis-certificate.jpg";
+import packageLineupImage from "@/assets/demlab-96-pack-lineup.webp";
 
 type PackageItem = {
   id: string;
@@ -86,8 +86,11 @@ type LotRecord = {
   status: string;
 };
 
-const REFRAIN =
-  "Kurbağa prense, bal kabağı arabaya — 96 derece de dönüşüme. Mutluysan yanında, üzgünsen karşında, yalnızsan arkanda.";
+const FAIRYTALE_COPY = "Masallarda kurbağa prense, Külkedisi prensese, bal kabağı arabaya dönüşür.";
+const BRAND_PROMISE = "DemlaB ile dönüşüm senin ellerinde.";
+const COMPANION_COPY =
+  "Mutluyken yanında, üzgünken karşında, yalnızken arkanda duran DemlaB 96°C’de bir büyüye dönüşür.";
+const REFRAIN = `${FAIRYTALE_COPY} ${BRAND_PROMISE}`;
 
 function Reveal({
   children,
@@ -236,7 +239,7 @@ export default function DemlabLanding() {
           className="label whitespace-nowrap text-mute"
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
-          Kurbağa prense · Bal kabağı arabaya · 96 derece dönüşüme
+          Kurbağa prense · Külkedisi prensese · Bal kabağı arabaya · DemlaB ile dönüşüme
         </p>
         <span className="label text-ember">96</span>
       </div>
@@ -308,30 +311,38 @@ export default function DemlabLanding() {
         {/* ── hero ─────────────────────────────────────────── */}
         <section className="mx-auto max-w-[1240px] px-5 pb-16 pt-12 sm:px-8 lg:pt-16">
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <Reveal>
-                <SectionMark n="00" title="Akredite parti sertifikalı · test garantili" />
+                <SectionMark n="00" title="Masallardan ilham · 96°C’de başlayan dönüşüm" />
               </Reveal>
 
               <Reveal delay={0.05}>
-                <p className="display mt-6 max-w-[22ch] text-[clamp(1.15rem,2.4vw,1.65rem)] italic leading-snug text-mute">
-                  “{REFRAIN}”
+                <p className="display mt-6 max-w-[25ch] text-[clamp(1.15rem,2.4vw,1.65rem)] italic leading-snug text-mute">
+                  “{FAIRYTALE_COPY}”
                 </p>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h1 className="display mt-5 text-[clamp(3rem,7.6vw,6.6rem)] font-black">
-                  <span className="block font-light">%96 Analitik Saflıkta</span>
-                  <span className="block italic text-ember">Laboratuvar Çözeltisi.</span>
+                <h1 className="display mt-5 text-[clamp(2.6rem,5.8vw,5.5rem)] font-black">
+                  <span className="block font-light">DemlaB ile</span>
+                  <span className="block italic text-ember">dönüşüm senin ellerinde.</span>
                 </h1>
               </Reveal>
 
               <Reveal delay={0.15}>
-                <p className="mt-7 max-w-[58ch] text-[17px] leading-[1.75] text-ink/80">
+                <p className="display max-w-[38ch] text-[clamp(1rem,1.8vw,1.3rem)] italic leading-snug text-bottle">
+                  {COMPANION_COPY}
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.18}>
+                <p className="mt-5 max-w-[58ch] text-[15px] leading-[1.75] text-ink/80">
                   Zanaat fermantasyonları, botanik tentür ekstraksiyonları ve hassas laboratuvar
-                  reaksiyonları için üretilmiş en yüksek saflık standardı. Her siparişte{" "}
-                  <strong className="font-semibold text-ink">kalibre edilmiş test kiti hediye</strong> ve
-                  kapıda kontrol güvencesiyle.
+                  reaksiyonları için üretilmiş %96 analitik saflıkta çözelti. Her siparişte{" "}
+                  <strong className="font-semibold text-ink">
+                    kalibre edilmiş test kiti hediye
+                  </strong>{" "}
+                  ve kapıda kontrol güvencesiyle.
                 </p>
               </Reveal>
 
@@ -386,30 +397,24 @@ export default function DemlabLanding() {
             </div>
 
             {/* hero plate + overlapping certificate */}
-            <Reveal delay={0.18} className="lg:col-span-5">
+            <Reveal delay={0.18} className="lg:col-span-6">
               <div className="relative">
-                <div
-                  className="relative -rotate-[1.5deg] border border-ink/20 p-2 paper-card"
-                  style={{
-                    background:
-                      "linear-gradient(150deg, #e9d9be 0%, #d8c39f 55%, #c9b189 100%)",
-                  }}
-                >
+                <div className="relative border border-[#b79154]/55 bg-[#15120e] p-2 shadow-[0_22px_64px_-24px_rgba(30,19,7,0.65)]">
                   {heroOk ? (
                     <img
-                      src={heroPlate}
-                      alt="Mühürlü amber laboratuvar cam şişesi, küçük bal kabağı ve cam terlik — gravür plaka"
-                      className="h-[420px] w-full object-cover object-center sm:h-[500px]"
+                      src={heroImage}
+                      alt="96°C işaretli DemlaB beherinden yükselen sihirli buhar; kurbağa, prenses ve bal kabağı arabası"
+                      className="aspect-[3/2] w-full object-cover object-center"
                       onError={() => setHeroOk(false)}
                     />
                   ) : (
-                    <div className="flex h-[420px] w-full items-center justify-center bg-paper-deep sm:h-[500px]">
-                      <DemlabMark className="h-24 w-24 text-ink/40" />
+                    <div className="flex aspect-[3/2] w-full items-center justify-center bg-[#15120e]">
+                      <DemlabMark className="h-24 w-24 text-ember-soft/60" />
                     </div>
                   )}
-                  <div className="pointer-events-none absolute inset-2 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
+                  <div className="pointer-events-none absolute inset-2 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5">
-                    <p className="label text-paper/85">Şekil 1 — Mühürlü numune şişesi</p>
+                    <p className="label text-paper/90">Şekil 1 — 96°C’de başlayan dönüşüm</p>
                   </div>
                 </div>
 
@@ -985,9 +990,10 @@ export default function DemlabLanding() {
                 >
                   {coaOk ? (
                     <img
-                      src={coaPlate}
-                      alt="Mühürlü analiz föyü, büyütme camı ve pipet — arşiv natürmort"
+                      src={certificateImage}
+                      alt="Mühürlü laboratuvar analiz sertifikası, numune tüpü ve mum mühür — temsili görsel"
                       className="h-full min-h-[364px] w-full object-cover"
+                      loading="lazy"
                       onError={() => setCoaOk(false)}
                     />
                   ) : (
@@ -997,7 +1003,7 @@ export default function DemlabLanding() {
                   )}
                   <div className="pointer-events-none absolute inset-2 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
                   <p className="absolute bottom-5 left-5 right-5 label text-paper/85">
-                    Şekil 3 — Parti analiz föyü ve mühür
+                    Şekil 3 — Laboratuvar analiz sertifikası · temsili görsel
                   </p>
                 </div>
               </Reveal>
@@ -1058,25 +1064,23 @@ export default function DemlabLanding() {
           {/* package plate */}
           <Reveal delay={0.1}>
             <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-              <div
-                className="relative border border-ink/20 p-2 lg:col-span-5"
-                style={{ background: "linear-gradient(150deg, #e9d9be, #cdb68f)" }}
-              >
+              <div className="relative border border-ink/20 bg-[#faf9f7] p-2 lg:col-span-5">
                 {pkgOk ? (
                   <img
-                    src={packagePlate}
-                    alt="Mühürlü HDPE bidon — katalog gravürü"
-                    className="h-[320px] w-full object-cover"
+                    src={packageLineupImage}
+                    alt="DemlaB 96° laboratuvar çözeltisi için farklı boylarda ambalajlar"
+                    className="h-[420px] w-full object-contain"
+                    loading="lazy"
                     onError={() => setPkgOk(false)}
                   />
                 ) : (
-                  <div className="flex h-[320px] items-center justify-center bg-paper-deep">
+                  <div className="flex h-[420px] items-center justify-center bg-paper-deep">
                     <DemlabMark className="h-20 w-20 text-ink/40" />
                   </div>
                 )}
               </div>
               <div className="lg:col-span-7">
-                <p className="label text-mute">Şekil 4 — Sevkiyat ambalajı</p>
+                <p className="label text-mute">Şekil 4 — DemlaB ambalaj serisi · temsili görsel</p>
                 <h3 className="display mt-3 text-[clamp(1.8rem,3.4vw,2.6rem)] font-bold">
                   Çift katman mühürlü, darbe emici HDPE bidon
                 </h3>
