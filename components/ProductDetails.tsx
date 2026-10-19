@@ -46,52 +46,74 @@ export default function ProductDetails({ product }: { product: Product }) {
 
   return (
     <div className="space-y-12">
-      {/* Üst Başlık Bölümü - Meşe Mahzen Işıltısı */}
+      {/* Üst Başlık Bölümü - Meşe Mahzen Işıltısı & Ürün Fotoğrafı */}
       <div className="oak-card rounded-3xl p-6 sm:p-10 relative overflow-hidden border border-[#e59840]/35">
-        <div className="max-w-3xl space-y-4 relative z-10">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="bg-[#e59840]/20 text-[#ffd79a] border border-[#e59840]/40 text-xs font-semibold px-3 py-1 rounded-full">
-              {product.category}
-            </span>
-            {product.casNo && (
-              <span className="text-xs font-mono bg-[#180d07] text-[#cbb29c] px-3 py-1 rounded-full border border-[#3e2315]">
-                CAS No: {product.casNo}
-              </span>
-            )}
-            {product.purity && (
-              <span className="text-xs bg-[#d8892f]/20 text-[#f3bd68] border border-[#e59840]/40 px-3 py-1 rounded-full">
-                Saflık: {product.purity}
-              </span>
-            )}
-            <span className="text-xs bg-[#2d180d] text-[#e0cbba] border border-[#442616] px-3 py-1 rounded-full flex items-center gap-1">
-              <Truck className="w-3 h-3 text-[#e59840]" />
-              <span>Mühürlü Hızlı Getirim</span>
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          {/* Sol: Gerçek Ürün Fotoğrafı */}
+          <div className="lg:col-span-4 flex justify-center">
+            <div className="relative w-full max-w-sm rounded-2xl overflow-hidden border border-[#e59840]/40 shadow-2xl bg-[#0f0703] group">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-[#ffd79a] bg-[#1a0e08]/90 border border-[#e59840]/30 px-3 py-1.5 rounded-xl backdrop-blur-md">
+                <span className="font-semibold flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#e59840]" />
+                  DEMLAB Orijinal Mühürlü
+                </span>
+                <span className="font-mono text-[#f3bd68]">96° Zanaat</span>
+              </div>
+            </div>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-[#fff5ea] font-serif leading-tight">
-            {product.name}
-          </h1>
+          {/* Sağ: Bilgi & Açıklama */}
+          <div className="lg:col-span-8 space-y-4">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="bg-[#e59840]/20 text-[#ffd79a] border border-[#e59840]/40 text-xs font-semibold px-3 py-1 rounded-full">
+                {product.category}
+              </span>
+              {product.casNo && (
+                <span className="text-xs font-mono bg-[#180d07] text-[#cbb29c] px-3 py-1 rounded-full border border-[#3e2315]">
+                  CAS No: {product.casNo}
+                </span>
+              )}
+              {product.purity && (
+                <span className="text-xs bg-[#d8892f]/20 text-[#f3bd68] border border-[#e59840]/40 px-3 py-1 rounded-full">
+                  Saflık: {product.purity}
+                </span>
+              )}
+              <span className="text-xs bg-[#2d180d] text-[#e0cbba] border border-[#442616] px-3 py-1 rounded-full flex items-center gap-1">
+                <Truck className="w-3 h-3 text-[#e59840]" />
+                <span>Mühürlü Hızlı Getirim</span>
+              </span>
+            </div>
 
-          <p className="text-sm sm:text-base text-[#d8c2ad] leading-relaxed">
-            {product.description}
-          </p>
+            <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-[#fff5ea] font-serif leading-tight">
+              {product.name}
+            </h1>
 
-          <div className="pt-2 flex flex-wrap gap-4 text-xs text-[#baa08b]">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#e59840]" />
-              <span>Orijinal Mühürlü Laboratuvar Bidonu</span>
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-[#f3bd68]" />
-              <span>Aynı Gün Kargoya / Sevkiyata Teslim</span>
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <CreditCard className="w-4 h-4 text-[#d8892f]" />
-              <span>3D Güvenli Ödeme & Havale</span>
-            </span>
+            <p className="text-sm sm:text-base text-[#d8c2ad] leading-relaxed">
+              {product.description}
+            </p>
+
+            <div className="pt-2 flex flex-wrap gap-4 text-xs text-[#baa08b]">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-[#e59840]" />
+                <span>Orijinal Mühürlü Laboratuvar Bidonu</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-[#f3bd68]" />
+                <span>Aynı Gün Kargoya / Sevkiyata Teslim</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <CreditCard className="w-4 h-4 text-[#d8892f]" />
+                <span>3D Güvenli Ödeme & Havale</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>

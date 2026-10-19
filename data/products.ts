@@ -10,6 +10,7 @@ export type Product = {
   category: "Endüstriyel Temizlik" | "Organik Çözücüler" | "Kozmetik & Esans Hammaddeleri" | "Özel Kimyasallar";
   shortDescription: string;
   description: string;
+  image: string;
   casNo?: string;
   appearance?: string;
   purity?: string;
@@ -34,6 +35,7 @@ export const products: Product[] = [
     shortDescription: "Sanayi tesisleri, talaşlı imalat, oto servis ve ağır makine temizliğinde yüksek konsantrasyonlu alkali temizleyici.",
     description:
       "Formülündeki özel yüzey aktif maddeler ve korozyon inhibitörleri sayesinde metal, beton ve seramik zeminlerde birikmiş mineral yağları, karbonlaşmış kirleri ve gres kalıntılarını hızla parçalar. Otomat makineleri ve basınçlı yıkama sistemleri ile tam uyumludur.",
+    image: "/images/hero-plate.jpg",
     appearance: "Şeffaf, hafif sarımsı berrak sıvı",
     purity: "%100 Aktif Bileşen Konsantresi",
     basePrice: 420,
@@ -75,6 +77,7 @@ export const products: Product[] = [
     shortDescription: "Elektronik temizlik, matbaa, reçine çözme ve yüzey dezenfeksiyonu için yüksek saflıkta organik çözücü.",
     description:
       "Hızlı buharlaşma kabiliyeti ve yüksek çözücülük gücü ile ardında tortu bırakmayan premium saflıkta izopropanol. Optik lensler, hassas elektronik kartlar ve kaplama öncesi yüzey hazırlığı için idealdir.",
+    image: "/images/product-5l-hdpe.webp",
     casNo: "67-63-0",
     appearance: "Renksiz, karakteristik alkol kokulu berrak sıvı",
     purity: "%99.9 Min. Teknik Derece",
@@ -119,6 +122,7 @@ export const products: Product[] = [
     shortDescription: "Kozmetik formülasyonlar, koku taşıyıcı sistemler ve nem tutucu uygulamalar için yüksek saflıkta glikol.",
     description:
       "Uluslararası farmasötik ve kozmetik kalite standartlarına uygun, kokusuz, renksiz ve viskoz taşıyıcı hammadde. Parfüm, oda kokusu ve cilt bakım ürünlerinde esansiyel yağların homojen dağılımını sağlar ve nemlendirici etki sunar.",
+    image: "/images/product-1l-amber.jpg",
     casNo: "57-55-6",
     appearance: "Renksiz, kokusuz, berrak viskoz sıvı",
     purity: "%99.8 Min. USP Derecesi",
@@ -162,6 +166,7 @@ export const products: Product[] = [
     shortDescription: "Kozmetik, kolonya, ortam kokusu ve dezenfektan üretimi için Ege Tepe & Karalar Grup standartlarında resmi denatüre taşıyıcı hammadde.",
     description:
       "Tarımsal kökenli saf alkolden üretilmiş, Tarım ve Orman Bakanlığı ile Sağlık Bakanlığı Kozmetik Yönetmeliği'ne uygun formülasyonda denatüre edilmiş (Bitrex / Tert-bütil alkol denatürantlı) berrak, kokusuzlaştırılmış çözücü ve esans taşıyıcı hammadde. Sadece Sanayi Sicil Belgesi ve Kapasite Raporu ibraz eden kurumsal üreticilere sevk edilir.",
+    image: "/images/hero-fairy-vessel.jpg",
     casNo: "64-17-5",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 - %96.5 v/v (Tarımsal Kökenli)",
@@ -204,6 +209,7 @@ export const products: Product[] = [
     shortDescription: "Matbaa mürekkepleri, flexo baskı, reçine çözme ve sanayi yüzey hazırlığı için yüksek buharlaşma hızlı teknik çözücü.",
     description:
       "Ambalaj sanayi, fleksografik baskı tesisleri ve vernik üretim prosesleri için Ege Tepe & Karalar Grup normlarına uygun, teknik denatürantlarla stabilize edilmiş solvent sınıfı endüstriyel çözücü. Hızlı kuruma, minimum koku ve yüksek pigment çözünürlüğü sağlar.",
+    image: "/images/product-20l-hdpe.jpg",
     casNo: "64-17-5",
     appearance: "Renksiz, karakteristik hafif kokulu berrak çözücü",
     purity: "%95 - %96 Teknik Derece Solvent",
@@ -246,6 +252,7 @@ export const products: Product[] = [
     shortDescription: "Özel fermantasyon prosesleriniz, biyokimyasal reaksiyonlar ve hassas laboratuvar çalışmaları için yüksek saflıkta %96'lık çözelti.",
     description:
       "Özel fermantasyon çalışmaları, botanik ekstraksiyon prosesleri ve analitik laboratuvar uygulamaları için özel olarak formüle edilmiş yüksek saflıkta %96 teknik laboratuvar çözeltisi. Homojen yapısı, kontrollü saflığı ve tortusuz içeriğiyle hassas fermantasyon ortamlarında maksimum verim sağlar.",
+    image: "/images/flask-gold-96.jpg",
     casNo: "64-17-5",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",
@@ -287,6 +294,7 @@ export const products: Product[] = [
     shortDescription: "Biyolojik olarak parçalanabilir, çevre dostu doğal narenciye bazlı ağır katran ve yapışkan sökücü.",
     description:
       "Doğal portakal kabuklarından distilasyonla elde edilen %100 biyolojik solvent. Petrol türevi toksik klorlu çözücülerin yerine çevre dostu yeşil kimya alternatifi olarak asfalt, reçine, yapışkan ve etiket kalıntılarında olağanüstü performans sağlar.",
+    image: "/images/product-1l-starter-bench.jpg",
     casNo: "5989-27-5",
     appearance: "Açık sarı, taze narenciye kokulu sıvı",
     purity: "≥ %95 Terpen Derecesi",
@@ -327,6 +335,7 @@ export const products: Product[] = [
     shortDescription: "Kozmetik, gıda ve ilaç endüstrisi için %100 saf bitkisel nemlendirici ve tatlandırıcı hammadde.",
     description:
       "Yüksek saflıkta bitkisel yağ asitlerinden rafine edilmiş, renksiz, berrak ve kokusuz USP/EP kalitesinde gliserol. Nem tutucu gücüyle tüm kozmetik ve kişisel bakım formüllerinin ana yapı taşıdır.",
+    image: "/images/product-1l-amber.jpg",
     casNo: "56-81-5",
     appearance: "Renksiz, kokusuz, tatlımsı viskoz şeffaf sıvı",
     purity: "≥ %99.7 Bitkisel Kaynaklı",
@@ -367,6 +376,7 @@ export const products: Product[] = [
     shortDescription: "Deterjan, kozmetik, emülsiyon ve tekstil yardımcı kimyasallarında pH ayarlayıcı ve yüzey aktif ajan.",
     description:
       "Tersiyer amin yapısıyla asitleri nötralize ederek suda çözünür sabunlar ve tuzlar oluşturur. Yağ/su emülsiyonlarında mükemmel stabilizatör olarak görev alır ve korozyon önleyici özellikleri bulunur.",
+    image: "/images/product-1l-starter-bench.jpg",
     casNo: "102-71-6",
     appearance: "Açık saman sarısı, hafif viskoz higroskopik sıvı",
     purity: "Min %85 / Min %99 Seçenekleri",

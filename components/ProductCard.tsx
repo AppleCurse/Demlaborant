@@ -37,17 +37,28 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group relative flex flex-col oak-card rounded-2xl transition-all duration-300 overflow-hidden">
-      {/* Üst Kategori & Durum */}
-      <div className="p-5 pb-0 flex items-start justify-between gap-2">
-        <span className={`inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full border ${getBadgeColor(product.category)}`}>
-          {product.category}
-        </span>
-        {product.casNo && (
-          <span className="text-[11px] text-[#bda189] font-mono bg-[#180d07] px-2 py-0.5 rounded border border-[#3e2315]">
-            CAS: {product.casNo}
+      {/* Ürün Görseli */}
+      <Link href={`/products/${product.slug}`} className="relative h-48 w-full overflow-hidden bg-[#100804] border-b border-[#3e2315] block">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#140b06] via-transparent to-transparent opacity-60" />
+        <div className="absolute top-3 left-3">
+          <span className={`inline-block text-[10px] font-semibold px-2.5 py-0.5 rounded-full border shadow-sm backdrop-blur-md ${getBadgeColor(product.category)}`}>
+            {product.category}
           </span>
+        </div>
+        {product.casNo && (
+          <div className="absolute top-3 right-3">
+            <span className="text-[10px] text-[#bda189] font-mono bg-[#180d07]/90 px-2 py-0.5 rounded border border-[#3e2315] backdrop-blur-sm">
+              CAS: {product.casNo}
+            </span>
+          </div>
         )}
-      </div>
+      </Link>
 
       {/* Başlık & Açıklama */}
       <div className="p-5 flex-1 flex flex-col">
