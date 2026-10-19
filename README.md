@@ -1,26 +1,27 @@
-# Shop Mix Pro
+# DEMLAB — Zanaat & Laboratuvar Kimyasalları
 
-Implement exactly the screenshot and nothing else
+Zanaat, fermantasyon ve botanik ekstraksiyon laboratuvarı için geliştirilmiş modern Next.js e-ticaret ve sipariş platformu.
 
-This project was built with [Lovable](https://lovable.dev).
+## Özellikler
 
-**Live app**: https://shop-mix-pro.lovable.app
+- **Next.js 16 (App Router)** & **Turbopack**
+- **Tailwind CSS v4** ile tasarlanmış masif meşe ve amber lüks tema
+- **Akredite Analitik Saflık & Reaktif Derecesi** (%96 Özel Fermantasyon Çözeltileri)
+- **Parti Bazlı Bağımsız Analiz Sertifikası (CoA)** sorgulama sistemi (`/api/coa`)
+- **İstanbul İçi Hızlı Motokurye & İlçe Bazlı ETA Hesaplama**
+- **Drizzle ORM & PostgreSQL** veri tabanı entegrasyonu
+- **Sepet ve Kapıda Ödeme / Havale** sipariş akışı
 
-## Build with Lovable
+## Kurulum ve Geliştirme
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/21304634-19c6-4d65-ab76-07699f2a82f4).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm install
 npm run dev
 ```
+
+Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açarak görüntüleyebilirsiniz.
+
+## Dağıtım (Vercel)
+
+Proje Vercel ile tam uyumludur. Sıfır yapılandırma ile otomatik olarak dağıtılır.
+İsteğe bağlı olarak PostgreSQL bağlantısı için `DATABASE_URL` ortam değişkenini ekleyebilirsiniz.

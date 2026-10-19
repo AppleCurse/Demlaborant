@@ -1,0 +1,25 @@
+export const companyInfo = {
+  name: "DEMLAB Zanaat & Laboratuvar Kimyasalları San. ve Tic. A.Ş.",
+  shortName: "DemlaB",
+  brandSubtitle: "Zanaat, Fermantasyon & Ekstraksiyon Laboratuvarı",
+  taxOffice: "Kadıköy Vergi Dairesi",
+  taxNumber: "2840914821",
+  mersisNo: "0284091482100001",
+  tradeRegistryNo: "348291-5",
+  address: "Caferağa Mah. Mühürdar Cad. No: 34/A Kadıköy / İstanbul",
+  dispatchHub: "Kadıköy Merkez Dağıtım ve Sevkiyat Noktası",
+  phone: "0850 512 07 37",
+  phoneFormatted: "+90 (850) 512 07 37",
+  phoneRaw: "08505120737",
+  whatsappPhone: "908505120737",
+  whatsappUrl: "https://wa.me/908505120737",
+  email: "bilgi@demlab.com.tr",
+  salesEmail: "siparis@demlab.com.tr",
+  workingHours: "Pazartesi - Cumartesi: 09:00 - 19:30 (İstanbul İçi Motokurye 7/24 Aktif)",
+  certifications: [
+    "Akredite Analitik Saflık & Reaktif Derecesi (≥ %96.0 v/v)",
+    "Parti Bazlı Bağımsız Analiz Sertifikası (CoA)",
+    "Botanik Ekstraksiyon & Zanaatkar Fermantasyon Uygunluğu",
+    "Çift Katman Mühürlü Emniyetli HDPE Ambalaj"
+  ],
+};

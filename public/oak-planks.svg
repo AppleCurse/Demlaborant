@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <!-- Meşe Ağaç Damarları Filtresi -->
+    <filter id="woodGrain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.25" numOctaves="4" result="noise" seed="42"/>
+      <feColorMatrix type="matrix" values="
+        0.35 0 0 0 0.18
+        0 0.22 0 0 0.10
+        0 0 0.14 0 0.05
+        0 0 0 0.5 0" in="noise" result="coloredNoise"/>
+      <feBlend mode="multiply" in="SourceGraphic" in2="coloredNoise"/>
+    </filter>
+    <linearGradient id="plank1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#362013"/>
+      <stop offset="30%" stop-color="#442a19"/>
+      <stop offset="70%" stop-color="#3b2416"/>
+      <stop offset="100%" stop-color="#2d1a0e"/>
+    </linearGradient>
+    <linearGradient id="plank2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f1b0f"/>
+      <stop offset="45%" stop-color="#3d2516"/>
+      <stop offset="75%" stop-color="#462c1b"/>
+      <stop offset="100%" stop-color="#28160c"/>
+    </linearGradient>
+    <linearGradient id="plank3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#402818"/>
+      <stop offset="50%" stop-color="#4c311e"/>
+      <stop offset="100%" stop-color="#321e11"/>
+    </linearGradient>
+    <linearGradient id="plank4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#29160c"/>
+      <stop offset="60%" stop-color="#382214"/>
+      <stop offset="100%" stop-color="#24130a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tahta 1 (Y: 0 - 100) -->
+  <g>
+    <rect x="0" y="0" width="260" height="96" fill="url(#plank1)" filter="url(#woodGrain)"/>
+    <rect x="264" y="0" width="136" height="96" fill="url(#plank2)" filter="url(#woodGrain)"/>
+    <!-- Derz çizgileri -->
+    <rect x="0" y="96" width="400" height="4" fill="#140a05"/>
+    <rect x="260" y="0" width="4" height="96" fill="#140a05"/>
+    <!-- Ahşap lif çizgileri -->
+    <line x1="0" y1="24" x2="260" y2="25" stroke="#25140b" stroke-width="0.8" opacity="0.6"/>
+    <line x1="0" y1="52" x2="260" y2="51" stroke="#523520" stroke-width="0.7" opacity="0.4"/>
+    <line x1="0" y1="78" x2="260" y2="79" stroke="#1d0f07" stroke-width="0.9" opacity="0.7"/>
+    <line x1="264" y1="35" x2="400" y2="34" stroke="#583923" stroke-width="0.8" opacity="0.5"/>
+  </g>
+
+  <!-- Tahta 2 (Y: 100 - 200) -->
+  <g>
+    <rect x="0" y="100" width="140" height="96" fill="url(#plank3)" filter="url(#woodGrain)"/>
+    <rect x="144" y="100" width="256" height="96" fill="url(#plank1)" filter="url(#woodGrain)"/>
+    <rect x="0" y="196" width="400" height="4" fill="#140a05"/>
+    <rect x="140" y="100" width="4" height="96" fill="#140a05"/>
+    <line x1="0" y1="130" x2="140" y2="131" stroke="#22120a" stroke-width="0.8" opacity="0.6"/>
+    <line x1="144" y1="125" x2="400" y2="124" stroke="#543722" stroke-width="0.7" opacity="0.5"/>
+    <line x1="144" y1="165" x2="400" y2="166" stroke="#201008" stroke-width="0.9" opacity="0.7"/>
+  </g>
+
+  <!-- Tahta 3 (Y: 200 - 300) -->
+  <g>
+    <rect x="0" y="200" width="310" height="96" fill="url(#plank4)" filter="url(#woodGrain)"/>
+    <rect x="314" y="200" width="86" height="96" fill="url(#plank3)" filter="url(#woodGrain)"/>
+    <rect x="0" y="296" width="400" height="4" fill="#140a05"/>
+    <rect x="310" y="200" width="4" height="96" fill="#140a05"/>
+    <line x1="0" y1="230" x2="310" y2="229" stroke="#1c0e07" stroke-width="0.8" opacity="0.7"/>
+    <line x1="0" y1="265" x2="310" y2="266" stroke="#482e1c" stroke-width="0.7" opacity="0.4"/>
+  </g>
+
+  <!-- Tahta 4 (Y: 300 - 400) -->
+  <g>
+    <rect x="0" y="300" width="190" height="96" fill="url(#plank2)" filter="url(#woodGrain)"/>
+    <rect x="194" y="300" width="206" height="96" fill="url(#plank4)" filter="url(#woodGrain)"/>
+    <rect x="0" y="396" width="400" height="4" fill="#140a05"/>
+    <rect x="190" y="300" width="4" height="96" fill="#140a05"/>
+    <line x1="0" y1="345" x2="190" y2="346" stroke="#4a2f1c" stroke-width="0.8" opacity="0.5"/>
+    <line x1="194" y1="340" x2="400" y2="339" stroke="#1e0f08" stroke-width="0.9" opacity="0.6"/>
+  </g>
+</svg>
