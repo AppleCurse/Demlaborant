@@ -10,37 +10,12 @@
 }
 
 body {
-  background-color: #150c07;
-  /* Gerçekçi Masif Meşe Döşeme Zemini (Aged Oak Planks Texture) */
+  background-color: #0d0704;
   background-image:
-    radial-gradient(circle at 50% 8%, rgba(229, 152, 64, 0.15) 0%, transparent 55%),
-    radial-gradient(circle at 85% 45%, rgba(184, 115, 51, 0.1) 0%, transparent 45%),
-    radial-gradient(circle at 15% 85%, rgba(138, 77, 30, 0.12) 0%, transparent 50%),
-    /* Meşe parke çıtaları ve derzleri */
-    repeating-linear-gradient(
-      90deg,
-      rgba(15, 8, 4, 0.95) 0px,
-      rgba(15, 8, 4, 0.95) 4px,
-      transparent 4px,
-      transparent 220px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(24, 13, 7, 0.85) 0px,
-      rgba(38, 22, 13, 0.85) 280px,
-      rgba(12, 6, 3, 0.98) 280px,
-      rgba(12, 6, 3, 0.98) 285px
-    ),
-    /* Ahşap lif dokuları */
-    repeating-radial-gradient(
-      ellipse at 30% 20%,
-      rgba(74, 44, 27, 0.4) 0px,
-      rgba(48, 27, 16, 0.3) 12px,
-      rgba(30, 16, 9, 0.5) 24px
-    ),
-    linear-gradient(180deg, #180d07 0%, #110803 100%);
+    radial-gradient(circle at 50% 0%, rgba(229, 152, 64, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 50%, rgba(184, 115, 51, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #130a05 0%, #0d0704 100%);
   background-attachment: fixed;
-  background-size: 100% 100%, 100% 100%, 100% 100%, 220px 100%, 100% 285px, 300px 300px, 100% 100%;
   color: #f7ede2;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;

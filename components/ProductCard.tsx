@@ -38,14 +38,14 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group relative flex flex-col oak-card rounded-2xl transition-all duration-300 overflow-hidden">
       {product.image && (
-        <Link href={`/products/${product.slug}`} className="block relative h-44 overflow-hidden border-b border-[#3e2315]">
+        <Link href={`/products/${product.slug}`} className="block relative h-52 overflow-hidden border-b border-[#3e2315] bg-[#0c0603] p-2 flex items-center justify-center">
           <img
             src={product.image}
             alt={product.name}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#120a05]/70 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#120a05]/60 via-transparent to-transparent" />
         </Link>
       )}
 

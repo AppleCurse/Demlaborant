@@ -73,7 +73,7 @@ export const products: Product[] = [
     shortDescription: "Atölye ve laboratuvar tipi düzenli çalışmalar için 5 litrelik kilitli emniyet kapaklı mühürlü HDPE bidon.",
     description:
       "Özel fermantasyon çalışmaları, botanik ekstraksiyon prosesleri ve analitik laboratuvar uygulamaları için özel olarak formüle edilmiş yüksek saflıkta %96 teknik laboratuvar çözeltisi. Homojen yapısı, kontrollü saflığı ve tortusuz içeriğiyle hassas fermantasyon ortamlarında maksimum verim sağlar.",
-    image: "/images/product-5l-hdpe.webp",
+    image: "/images/hero-plate.jpg",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",
     basePrice: 1750,

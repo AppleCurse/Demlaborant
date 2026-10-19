@@ -55,9 +55,9 @@ export default function ProductDetails({ product }: { product: Product }) {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-64 sm:h-72 object-contain p-3 group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-[#ffd79a] bg-[#1a0e08]/90 border border-[#e59840]/30 px-3 py-1.5 rounded-xl backdrop-blur-md">
                 <span className="font-semibold flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#e59840]" />
