@@ -20,7 +20,7 @@ import InquiryForm from "./InquiryForm";
 export default function ProductDetails({ product }: { product: Product }) {
   const { addToCart } = useCart();
   const [selectedPackaging, setSelectedPackaging] = useState<PackagingOption>(
-    product.packagingOptions[0]
+    product.packagingOptions[0]!
   );
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"buy" | "inquiry">("buy");

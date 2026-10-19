@@ -1,158 +1,94 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Shield, Phone, Mail, Menu, X, ChevronRight, FlaskConical, ShoppingBag, Truck, Sparkles } from "lucide-react";
-import { companyInfo } from "@/demlab/data/company";
+import { Menu, X, ShoppingBag, ArrowUpRight, Truck } from "lucide-react";
 import { useCart } from "@/demlab/context/CartContext";
 
-export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { totalItems, setIsCartOpen } = useCart();
-
-  const navigation = [
-    { name: "Ana Sayfa", href: "/" },
-    { name: "Fermantasyon Ürünleri", href: "/products" },
-    { name: "Dozaj & Alkol Hesaplayıcı", href: "/calculator" },
-    { name: "Sevkiyat Takibi", href: "/tracking" },
-    { name: "TDS / Analiz Belgeleri", href: "/documents" },
-    { name: "Atölye & Hakkımızda", href: "/about" },
-    { name: "İletişim & Teklif", href: "/contact" },
-  ];
-
+export function Brand() {
   return (
-    <header className="sticky top-0 z-40 bg-[#1c100a]/95 backdrop-blur-md border-b border-[#e59840]/25 text-[#f7ede2]">
-      {/* Üst Bilgi Barı - Meşe & Bakır Tonları */}
-      <div className="bg-[#0e0704] text-[#cfb095] text-xs py-2 px-4 sm:px-8 border-b border-[#2d190e]">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <Truck className="w-3.5 h-3.5 text-[#e59840]" />
-              <span className="font-medium text-[#f0e2d3]">Özel Fermantasyon Çözeltilerinde Mühürlü Ambalaj & Hızlı Sevkiyat</span>
-            </span>
-            <span className="hidden md:inline-block text-[#4a2b19]">|</span>
-            <span className="hidden md:flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-[#d8892f]" />
-              <span>%100 Analitik Saflık & Parti Bazlı Analiz Sertifikası (CoA)</span>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px]">
-            <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-1 hover:text-[#f3bd68] transition">
-              <Phone className="w-3 h-3 text-[#e59840]" />
-              <span>{companyInfo.phone}</span>
-            </a>
-            <span className="text-[#4a2b19]">|</span>
-            <a href={`mailto:${companyInfo.salesEmail}`} className="flex items-center gap-1 hover:text-[#f3bd68] transition">
-              <Mail className="w-3 h-3 text-[#e59840]" />
-              <span>{companyInfo.salesEmail}</span>
-            </a>
-          </div>
-        </div>
+    <span className="premium-brand">
+      <svg viewBox="0 0 40 56" fill="none" aria-hidden="true">
+        <path
+          d="M20 2C9 15 12 20 20 28C28 20 31 15 20 2ZM20 51C2 39 1 26 5 20C17 27 20 35 20 51ZM20 51C38 39 39 26 35 20C23 27 20 35 20 51Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+      </svg>
+      <span>
+        Demlab<small>SAFLIK · DENGE · DÖNÜŞÜM</small>
+      </span>
+    </span>
+  );
+}
+const navigation = [
+  { to: "/products", label: "Ürünler" },
+  { to: "/about", label: "Demlab Hikâyesi" },
+  { to: "/documents", label: "Kalite & Analiz" },
+  { to: "/tracking", label: "Teslimat Takibi" },
+] as const;
+export default function Header() {
+  const [open, setOpen] = useState(false);
+  const { totalItems, setIsCartOpen } = useCart();
+  return (
+    <>
+      <div className="premium-topbar">
+        <span>HASSAS ÇALIŞMALAR İÇİN, ÖZENLE.</span>
+        <span>
+          <Truck size={13} /> İstanbul içi motokurye teslimatı <span className="top-dot">·</span>{" "}
+          Mühürlü ambalaj
+        </span>
       </div>
-
-      {/* Ana Menü Çubuğu */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
-        {/* DEMLAB Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d8892f] via-[#9e591b] to-[#512708] flex items-center justify-center text-white shadow-lg shadow-[#d8892f]/20 border border-[#f5b86e]/35 group-hover:scale-105 transition-transform">
-            <FlaskConical className="w-6 h-6 text-[#fff2db]" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-black tracking-wider text-white block leading-none font-serif">
-                DEM<span className="text-[#e59840]">LAB</span>
-              </span>
-              <span className="text-[9px] uppercase font-bold tracking-widest text-[#f3bd68] bg-[#e59840]/20 px-1.5 py-0.5 rounded border border-[#e59840]/40">
-                ZANAAT SERİSİ
-              </span>
-            </div>
-            <span className="text-[10px] tracking-widest uppercase text-[#bfa085] font-medium block mt-1">
-              Fermantasyon & Ekstraksiyon Laboratuvarı
-            </span>
-          </div>
-        </Link>
-
-        {/* Desktop Navigasyon */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wide text-[#dec4ae]">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className="hover:text-[#f3bd68] transition-colors py-1 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-[#e59840] after:absolute after:bottom-0 after:left-0 after:transition-all"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Sepet & Teklif */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center gap-2 bg-[#2a170d] hover:bg-[#382012] text-[#f7ede2] border border-[#e59840]/30 text-xs font-bold px-3.5 py-2.5 rounded-xl transition shadow-inner"
-            aria-label="Sepeti Görüntüle"
-          >
-            <ShoppingBag className="w-4 h-4 text-[#e59840]" />
-            <span className="hidden sm:inline">Sepetim</span>
-            {totalItems > 0 && (
-              <span className="w-5 h-5 rounded-full bg-[#d8892f] text-white text-[10px] flex items-center justify-center font-bold animate-pulse">
-                {totalItems}
-              </span>
-            )}
-          </button>
-
-          <Link
-            to="/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-[#d8892f] to-[#b3691d] hover:from-[#e59840] hover:to-[#c67825] text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md shadow-[#d8892f]/20 border border-[#ffd59c]/30 transition active:scale-[0.98]"
-          >
-            <span>Özel Teklif</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+      <header className="premium-header">
+        <div className="premium-nav-wrap">
+          <Link to="/" aria-label="Demlab ana sayfa">
+            <Brand />
           </Link>
-
-          {/* Mobil Menü Butonu */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-[#dec4ae] hover:bg-[#2a170d] transition"
-            aria-label="Menü"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6 text-[#e59840]" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobil Menü */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#180e08] border-t border-[#e59840]/20 px-4 py-4 space-y-3 shadow-2xl">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-sm font-medium text-[#f0ded0] hover:bg-[#28160d] hover:text-[#f3bd68] transition"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <div className="pt-2 flex flex-col gap-2">
+          <nav className="premium-desktop-nav" aria-label="Ana menü">
+            {navigation.map((item) => (
+              <Link key={item.to} to={item.to}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="premium-nav-actions">
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setIsCartOpen(true);
-              }}
-              className="w-full flex items-center justify-center gap-2 bg-[#2a170d] text-[#f7ede2] border border-[#e59840]/30 font-semibold py-2.5 rounded-lg text-sm"
+              className="premium-cart"
+              onClick={() => setIsCartOpen(true)}
+              aria-label={`Sepeti görüntüle, ${totalItems} ürün`}
             >
-              <ShoppingBag className="w-4 h-4 text-[#e59840]" />
-              <span>Sepetimi Görüntüle ({totalItems})</span>
+              <ShoppingBag size={19} />
+              <span>Sepetim ({totalItems})</span>
             </button>
-            <Link
-              to="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center block bg-gradient-to-r from-[#d8892f] to-[#b3691d] text-white font-bold py-2.5 rounded-lg text-sm"
-            >
-              Özel Fermantasyon Teklifi Al
+            <Link to="/contact" className="premium-nav-cta">
+              İletişime Geç <ArrowUpRight size={15} />
             </Link>
+            <button
+              className="premium-menu-toggle"
+              aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
-      )}
-    </header>
+        {open && (
+          <nav className="premium-mobile-nav" id="mobile-navigation" aria-label="Mobil menü">
+            {navigation.map((item) => (
+              <Link key={item.to} to={item.to} onClick={() => setOpen(false)}>
+                {item.label}
+                <ArrowUpRight size={16} />
+              </Link>
+            ))}
+            <Link to="/calculator" onClick={() => setOpen(false)}>
+              Seyreltme Hesaplayıcı
+            </Link>
+            <Link to="/contact" onClick={() => setOpen(false)}>
+              İletişim
+            </Link>
+          </nav>
+        )}
+      </header>
+    </>
   );
 }
