@@ -101,14 +101,14 @@ export default function CalculatorPage() {
             </div>
           </div>
 
-          {/* 3. Hedef Alkol Derecesi */}
+          {/* 3. Hedef Nihai Derece */}
           <div>
             <div className="flex justify-between items-center mb-1">
               <label className="text-xs font-bold text-[#f7ede2] font-serif">
                 3. Hedef Nihai Derece:
               </label>
               <span className="text-xs font-black text-[#f3bd68] font-mono">
-                %{safeTargetABV} ABV (Hacimce)
+                %{safeTargetABV}° (Hacimce)
               </span>
             </div>
             <input
@@ -135,7 +135,7 @@ export default function CalculatorPage() {
           <div className="p-3.5 bg-[#160c07] rounded-xl border border-[#3e2315] text-[11px] text-[#baa08a] flex items-start gap-2.5">
             <AlertCircle className="w-4 h-4 text-[#e59840] shrink-0 mt-0.5" />
             <p>
-              Gay-Lussac kontrüksiyon yasası uyarınca alkol ve su karışımlarında hacim daralması (kontraksiyon) meydana gelebilir. Hassas analizler için distile veya osmoz arıtılmış su kullanınız.
+              Gay-Lussac prensipleri uyarınca çözelti ve su karışımlarında hacim daralması (kontraksiyon) meydana gelebilir. Hassas analizler için distile veya osmoz arıtılmış su kullanınız.
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function CalculatorPage() {
               Gereken Karışım Miktarları
             </h3>
             <p className="text-xs text-[#a98f7b] mt-0.5">
-              {targetVolume} Litre @ %{safeTargetABV} nihai karışım için:
+              {targetVolume} Litre @ %{safeTargetABV}° nihai karışım için:
             </p>
           </div>
 
@@ -171,7 +171,7 @@ export default function CalculatorPage() {
                 <span className="text-sm font-bold text-[#f3bd68]">Litre</span>
               </div>
               <p className="text-[10px] text-[#937b67]">
-                Tavsiye edilen ambalaj: {solutionNeeded <= 5 ? "1 x 5L Bidon" : solutionNeeded <= 10 ? "1 x 10L Bidon" : solutionNeeded <= 20 ? "1 x 20L Bidon" : `${Math.ceil(solutionNeeded / 20)} x 20L Bidon`}
+                Tavsiye edilen ambalaj: {solutionNeeded <= 1 ? "1 x 1L Şişe" : solutionNeeded <= 5 ? "1 x 5L Bidon" : solutionNeeded <= 10 ? "1 x 10L Bidon" : `${Math.ceil(solutionNeeded / 20)} x 20L Bidon`}
               </p>
             </div>
 
@@ -194,10 +194,10 @@ export default function CalculatorPage() {
 
           <div className="pt-2">
             <Link
-              href="/products/96-laboratuvar-cozeltisi-ozel-fermantasyon"
+              href="/products/demlab-96-cozelti-5l"
               className="w-full inline-flex items-center justify-center gap-2 btn-amber font-bold py-3.5 px-4 rounded-xl shadow-lg transition text-xs"
             >
-              <span>%96 Çözelti Sipariş Et (5L/10L/20L)</span>
+              <span>%96 Çözelti Sipariş Et (1L / 5L / 10L / 20L)</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

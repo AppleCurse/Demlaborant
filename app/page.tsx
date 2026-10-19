@@ -12,12 +12,14 @@ import {
   FlaskConical,
   Flame,
   Boxes,
-  Award
+  Award,
+  CreditCard,
+  Clock,
+  Zap
 } from "lucide-react";
 
 export default function HomePage() {
-  const featuredProduct = products.find((p) => p.slug === "96-laboratuvar-cozeltisi-ozel-fermantasyon") || products[0];
-  const featuredProducts = products.filter((p) => p.isFeatured);
+  const featuredProduct = products.find((p) => p.slug === "demlab-96-cozelti-5l") || products[0];
 
   return (
     <main className="space-y-16 sm:space-y-24 pb-20">
@@ -54,7 +56,7 @@ export default function HomePage() {
                 href="/calculator"
                 className="inline-flex items-center gap-2 bg-[#25140b] hover:bg-[#341d10] text-[#f5dfce] border border-[#e59840]/30 font-semibold text-sm px-6 py-3.5 rounded-xl transition"
               >
-                Dozaj & Alkol Hesaplayıcı
+                Dozaj & Seyreltme Hesaplayıcı
               </Link>
             </div>
 
@@ -92,30 +94,31 @@ export default function HomePage() {
               </div>
 
               <h3 className="text-xl font-bold text-[#fef5ec] font-serif mb-2 leading-snug">
-                {featuredProduct.name}
+                DEMLAB 96° Laboratuvar Çözeltisi
               </h3>
               <p className="text-xs text-[#cbb29c] mb-5 leading-relaxed">
-                {featuredProduct.shortDescription}
+                Hassas zanaat fermantasyonları ve ekstraksiyon için 4 farklı orijinal ambalaj seçeneği:
               </p>
 
-              {/* 5L, 10L, 20L Özel Fiyat Tablosu */}
+              {/* 1L, 5L, 10L, 20L Özel Fiyat Tablosu */}
               <div className="space-y-2.5 mb-6">
-                {featuredProduct.packagingOptions.map((opt, i) => (
-                  <div
-                    key={i}
-                    className="p-3 bg-[#180d07]/90 rounded-xl border border-[#442616] hover:border-[#e59840]/50 transition flex justify-between items-center text-xs"
+                {products.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/products/${p.slug}`}
+                    className="p-3 bg-[#180d07]/90 rounded-xl border border-[#442616] hover:border-[#e59840]/50 transition flex justify-between items-center text-xs group"
                   >
                     <div className="flex items-center gap-2">
-                      <Boxes className="w-4 h-4 text-[#d8892f]" />
-                      <span className="text-[#f7ede2] font-semibold">{opt.size}</span>
+                      <Boxes className="w-4 h-4 text-[#d8892f] group-hover:text-[#f3bd68] transition" />
+                      <span className="text-[#f7ede2] font-semibold">{p.packagingOptions[0]?.size || p.name}</span>
                     </div>
                     <div className="flex items-baseline gap-1">
                       <span className="font-mono font-black text-sm text-[#f3bd68]">
-                        {opt.price.toLocaleString("tr-TR")} ₺
+                        {p.basePrice.toLocaleString("tr-TR")} ₺
                       </span>
                       <span className="text-[10px] text-[#937b68]">+KDV</span>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
 
@@ -187,13 +190,13 @@ export default function HomePage() {
             </div>
             <h4 className="text-base font-bold text-[#fef5ec] mb-1 font-serif">Mühürlü Ambalaj</h4>
             <p className="text-xs text-[#c6ad97] leading-relaxed">
-              5L, 10L ve 20L kilitli güvenlik kapaklı HDPE kaplarda, sızdırmaz parti mührüyle hızlı adrese sevkiyat.
+              1L cam, 5L, 10L ve 20L kilitli güvenlik kapaklı HDPE kaplarda, sızdırmaz parti mührüyle hızlı sevkiyat.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 3. Öne Çıkan Ürünler Vitrini */}
+      {/* 3. Tüm Boylar & Çözelti Kataloğu (4 Gerçek Ürün) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8">
           <div>
@@ -201,10 +204,10 @@ export default function HomePage() {
               Zanaat Kataloğu
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#fef5ec] font-serif">
-              Fermantasyon & Çözelti Seçenekleri
+              DEMLAB %96 Çözelti Ambalaj Seçenekleri
             </h3>
             <p className="text-xs text-[#c6ad97] mt-1">
-              Fermantasyon ve laboratuvar çalışmaları için özenle seçilmiş ürünler.
+              1 L numunelik cam şişeden 20 L sanayi bidonuna kadar ihtiyacınıza uygun ambalajlar.
             </p>
           </div>
 
@@ -217,14 +220,99 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredProducts.map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </section>
 
-      {/* 4. Dozaj & Fıçı Hesaplayıcı Bannerı */}
+      {/* 4. İstanbul İçi 7/24 Özel Motokurye Servisi */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="oak-card rounded-3xl overflow-hidden border border-[#e59840]/35 grid grid-cols-1 lg:grid-cols-12 items-stretch">
+          {/* Sol: Orijinal Kurye Posteri */}
+          <div className="lg:col-span-5 relative min-h-[320px] bg-[#0c0603] flex items-center justify-center p-4">
+            <img
+              src="/images/courier-poster-demlab.jpg"
+              alt="DEMLAB İstanbul İçi 7/24 Motokurye"
+              className="w-full h-full max-h-[440px] object-contain rounded-2xl shadow-2xl"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+          </div>
+
+          {/* Sağ: Kurye Detayları ve Ödeme Avantajları */}
+          <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2d180d] border border-[#e59840]/40 text-[#f3bd68] text-xs font-bold w-fit">
+              <Zap className="w-3.5 h-3.5 text-[#e59840]" />
+              <span>İSTANBUL İÇİ 7/24 EKSPRES MOTOKURYE</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-[#fff5ea] font-serif leading-tight">
+              Gündüz, Gece, Yağmurlu Fark Etmez: <br />
+              <span className="amber-title">Mühürlü Kutuda Kapınızda</span>
+            </h3>
+
+            <p className="text-xs sm:text-sm text-[#d6bda6] leading-relaxed">
+              Acil laboratuvar ve zanaat ihtiyaçlarınız için İstanbul genelinde 7 gün 24 saat kesintisiz motokurye sevkiyatı. Özel korumalı, dışarıdan içeriği görünmeyen çift mühürlü ambalajında güvenli teslimat.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="p-3 bg-[#180d07] rounded-xl border border-[#3e2315] flex items-center gap-3">
+                <CreditCard className="w-5 h-5 text-[#e59840] shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-[#fef5ec]">Kapıda Mobil POS</div>
+                  <div className="text-[11px] text-[#9b806b]">Kredi Kartı / Temassız</div>
+                </div>
+              </div>
+
+              <div className="p-3 bg-[#180d07] rounded-xl border border-[#3e2315] flex items-center gap-3">
+                <ShieldCheck className="w-5 h-5 text-[#f3bd68] shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-[#fef5ec]">Mühürlü Gizli Kutu</div>
+                  <div className="text-[11px] text-[#9b806b]">Sızdırmaz & Tam Güvenlik</div>
+                </div>
+              </div>
+
+              <div className="p-3 bg-[#180d07] rounded-xl border border-[#3e2315] flex items-center gap-3">
+                <Clock className="w-5 h-5 text-[#d8892f] shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-[#fef5ec]">7/24 Nöbetçi Kurye</div>
+                  <div className="text-[11px] text-[#9b806b]">Gece & Yağmurlu Sevk</div>
+                </div>
+              </div>
+
+              <div className="p-3 bg-[#180d07] rounded-xl border border-[#3e2315] flex items-center gap-3">
+                <Boxes className="w-5 h-5 text-[#e59840] shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-[#fef5ec]">Nakit & Havale Kolaylığı</div>
+                  <div className="text-[11px] text-[#9b806b]">Hızlı Sipariş Onayı</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <a
+                href="https://wa.me/905300000000?text=Merhaba,%207/24%20acil%20kurye%20hakkinda%20bilgi%20almak%20istiyorum."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 btn-amber font-bold text-xs px-5 py-3 rounded-xl shadow-md"
+              >
+                <span>7/24 Kurye Çağır & WhatsApp</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <Link
+                href="/products/demlab-96-cozelti-10l"
+                className="inline-flex items-center gap-2 bg-[#25140b] hover:bg-[#341d10] text-[#f5dfce] border border-[#e59840]/30 font-semibold text-xs px-5 py-3 rounded-xl transition"
+              >
+                10L Kurye Bidonunu Seç
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Dozaj & Fıçı Hesaplayıcı Bannerı */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="oak-card p-8 sm:p-12 rounded-3xl border border-[#e59840]/35 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
           <div className="max-w-xl space-y-3 relative z-10">
@@ -248,7 +336,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Kurumsal Teklif & SSS */}
+      {/* 6. Kurumsal Teklif & SSS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-7">
           <InquiryForm defaultProduct={featuredProduct.name} />

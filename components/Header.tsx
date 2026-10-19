@@ -12,8 +12,8 @@ export default function Header() {
 
   const navigation = [
     { name: "Ana Sayfa", href: "/" },
-    { name: "Fermantasyon Ürünleri", href: "/products" },
-    { name: "Dozaj & Alkol Hesaplayıcı", href: "/calculator" },
+    { name: "Çözelti Ürünleri", href: "/products" },
+    { name: "Dozaj & Seyreltme Hesaplayıcı", href: "/calculator" },
     { name: "Sevkiyat Takibi", href: "/tracking" },
     { name: "TDS / Analiz Belgeleri", href: "/documents" },
     { name: "Atölye & Hakkımızda", href: "/about" },

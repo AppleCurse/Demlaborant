@@ -67,10 +67,10 @@ export default function Footer() {
           <h4 className="text-[#fdf6ed] font-bold mb-4 text-xs tracking-widest uppercase font-serif text-[#e59840]">Koleksiyon & Hizmetler</h4>
           <ul className="space-y-2.5 text-xs text-[#c6ab95]">
             <li>
-              <Link href="/products" className="hover:text-[#f3bd68] transition">Fermantasyon Ürünleri</Link>
+              <Link href="/products" className="hover:text-[#f3bd68] transition">Çözelti Ürünleri</Link>
             </li>
             <li>
-              <Link href="/calculator" className="hover:text-[#f3bd68] transition">Dozaj & Alkol Hesaplayıcı</Link>
+              <Link href="/calculator" className="hover:text-[#f3bd68] transition">Dozaj & Seyreltme Hesaplayıcı</Link>
             </li>
             <li>
               <Link href="/documents" className="hover:text-[#f3bd68] transition">Teknik Analiz Formları (CoA / TDS)</Link>

@@ -22,7 +22,7 @@ export default function AboutPage() {
           {companyInfo.name}, zanaatkarların, biyoteknoloji atölyelerinin ve özel fermantasyon meraklılarının en yüksek saflıkta çözeltilere güvenle ulaşabilmesi amacıyla kurulmuştur.
         </p>
         <p className="text-xs sm:text-sm text-[#baa08a] leading-relaxed">
-          Geleneksel meşe fıçı dinlendirme tekniklerinden modern analitik ekstraksiyonlara kadar her damlada stabiliteyi, tortusuzluğu ve doğru alkol derecesini garanti ediyoruz. Gaz kromatografisi (GC) ile test edilmiş lot sertifikaları ve emniyet kilitli mühürlü ambalajlarla teslimat sağlıyoruz.
+          Geleneksel meşe fıçı dinlendirme tekniklerinden modern analitik ekstraksiyonlara kadar her damlada stabiliteyi, tortusuzluğu ve doğru çözelti derecesini garanti ediyoruz. Gaz kromatografisi (GC) ile test edilmiş lot sertifikaları ve emniyet kilitli mühürlü ambalajlarla teslimat sağlıyoruz.
         </p>
       </section>
 
@@ -39,9 +39,9 @@ export default function AboutPage() {
           <div className="text-[11px] text-[#937b67] mt-1">Tanen & vanilin dengesi</div>
         </div>
         <div className="oak-card p-6 rounded-2xl text-center">
-          <div className="text-3xl sm:text-4xl font-extrabold text-[#f3bd68] font-mono">5L - 20L</div>
+          <div className="text-3xl sm:text-4xl font-extrabold text-[#f3bd68] font-mono">1L - 20L</div>
           <div className="text-xs font-bold text-[#fef5ec] font-serif mt-2">Mühürlü Ambalaj</div>
-          <div className="text-[11px] text-[#937b67] mt-1">Emniyet kilitli HDPE kaplar</div>
+          <div className="text-[11px] text-[#937b67] mt-1">Emniyet kilitli kaplar</div>
         </div>
         <div className="oak-card p-6 rounded-2xl text-center">
           <div className="text-3xl sm:text-4xl font-extrabold text-[#f3bd68] font-mono">81 İl</div>

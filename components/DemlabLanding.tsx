@@ -31,10 +31,19 @@ type PackageItem = {
 
 const PACKAGES: PackageItem[] = [
   {
+    id: "pkg-1l",
+    volume: 1,
+    price: 450,
+    badge: "Numunelik / Deneme Boyu",
+    courierEligible: false,
+    description:
+      "Özel formülasyon ve reçeteleri test etmeniz için emniyet kilitli 1 litrelik amber cam şişede numune ambalajı.",
+  },
+  {
     id: "pkg-5l",
     volume: 5,
     price: 1750,
-    badge: "Giriş / Deneme Boyu",
+    badge: "Giriş / Atölye Boyu",
     courierEligible: false,
     description:
       "Kompakt atölye ve laboratuvar çalışmaları için optimize edilmiş sızdırmaz HDPE ambalaj.",
@@ -481,7 +490,7 @@ export default function DemlabLanding() {
                 İhtiyacınıza uygun <span className="italic text-ember">ambalaj seçimi</span>
               </h2>
               <p className="text-[15px] leading-relaxed text-ink/75 lg:col-span-5">
-                Tüm paketlerde <strong className="font-semibold text-ink">alkol test kiti hediye</strong>,
+                Tüm paketlerde <strong className="font-semibold text-ink">derece test kiti hediye</strong>,
                 kapıda kontrollü teslimat ve 81 ile mühürlü kargo güvencesi standarttır. Liste fiyatı
                 dışında sürpriz kalem yoktur.
               </p>
@@ -760,7 +769,7 @@ export default function DemlabLanding() {
 
               <Reveal delay={0.12}>
                 <p className="mt-8 border-l-2 border-ember pl-4 font-mono text-[12px] leading-relaxed text-mute">
-                  Formül: V₁ × C₁ = V₂ × C₂ — baz alkol %96 olarak alınmıştır. Sonucu kendi test
+                  Formül: V₁ × C₁ = V₂ × C₂ — baz çözelti %96 olarak alınmıştır. Sonucu kendi test
                   kitinizle doğrulayın.
                 </p>
               </Reveal>
@@ -808,7 +817,7 @@ export default function DemlabLanding() {
                       onChange={(e) => setTargetABV(Number(e.target.value))}
                       className="dl-range mt-2"
                       style={fill(targetABV, 5, 95)}
-                      aria-label="Hedef alkol derecesi"
+                      aria-label="Hedef çözelti derecesi"
                     />
                     <div className="flex justify-between font-mono text-[10px] text-mute">
                       <span>%5</span>
@@ -966,7 +975,7 @@ export default function DemlabLanding() {
 
                       <div className="mt-6 border-t border-ink/20">
                         {[
-                          ["Etil alkol (v/v)", lotState.lot.abv],
+                          ["Çözelti derecesi (v/v)", lotState.lot.abv],
                           ["Kalıntı / kül", lotState.lot.residue],
                           ["Uçucu asitlik", lotState.lot.volatileAcidity],
                           ["Ağır metal (Pb/Cd)", lotState.lot.heavyMetals],
@@ -1240,7 +1249,7 @@ export default function DemlabLanding() {
                     <p className="font-display text-[18px] font-bold">
                       {selected.volume} Litre %96 çözelti
                     </p>
-                    <p className="label text-ember">+ hediye alkol test kiti</p>
+                    <p className="label text-ember">+ hediye derece test kiti</p>
                   </div>
                   <p className="tnum font-mono text-[22px] font-bold">
                     {selected.price.toLocaleString("tr-TR")} ₺
