@@ -8,9 +8,10 @@ export async function GET() {
   try {
     await db.execute(sql`select 1`);
     return NextResponse.json({ status: "ok", database: "up" });
-  } catch {
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.replace(/(password=|:\/\/)[^\s]+/gi, "$1[redacted]").slice(0, 240) : "unknown";
     return NextResponse.json(
-      { status: "degraded", database: "down" },
+      { status: "degraded", database: "down", reason },
       { status: 503 },
     );
   }
