@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import InquiryForm from "@/components/InquiryForm";
@@ -232,11 +233,12 @@ export default function HomePage() {
         <div className="oak-card rounded-3xl overflow-hidden border border-[#e59840]/35 grid grid-cols-1 lg:grid-cols-12 items-stretch">
           {/* Sol: Orijinal Kurye Posteri */}
           <div className="lg:col-span-5 relative min-h-[320px] bg-[#0c0603] flex items-center justify-center p-4">
-            <img
+            <Image
               src="/images/courier-poster-demlab.jpg"
               alt="DEMLAB İstanbul İçi 7/24 Motokurye"
+              width={900}
+              height={900}
               className="w-full h-full max-h-[440px] object-contain rounded-2xl shadow-2xl"
-              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
           </div>

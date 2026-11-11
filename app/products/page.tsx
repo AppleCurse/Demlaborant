@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { products, categories } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
-import { Search, Filter, Sparkles } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Tümü");

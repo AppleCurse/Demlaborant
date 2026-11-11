@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FlaskConical, MapPin, Phone, Mail, FileCheck, ShieldAlert, Award, Sparkles } from "lucide-react";
+import { FlaskConical, MapPin, Phone, Mail, FileCheck, ShieldAlert, Award } from "lucide-react";
 import { companyInfo } from "@/data/company";
+import { FacebookMark } from "@/components/marks";
 
 export default function Footer() {
   return (
@@ -109,11 +110,15 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
             <Phone className="w-4 h-4 text-[#e59840] shrink-0" />
-            <a href={`tel:${companyInfo.phone}`} className="hover:text-[#f3bd68] transition">{companyInfo.phone}</a>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="hover:text-[#f3bd68] transition">{companyInfo.phone}</a>
           </div>
           <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
             <Mail className="w-4 h-4 text-[#e59840] shrink-0" />
             <a href={`mailto:${companyInfo.email}`} className="hover:text-[#f3bd68] transition">{companyInfo.email}</a>
+          </div>
+          <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
+            <FacebookMark className="w-4 h-4 text-[#e59840] shrink-0" />
+            <a href={companyInfo.facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#f3bd68] transition">DEMLAB Facebook</a>
           </div>
         </div>
       </div>

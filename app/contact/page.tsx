@@ -1,6 +1,7 @@
 import InquiryForm from "@/components/InquiryForm";
 import { companyInfo } from "@/data/company";
-import { MapPin, Phone, Mail, Clock, ShieldCheck, Truck, Sparkles } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Truck, Sparkles } from "lucide-react";
+import { FacebookMark } from "@/components/marks";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <div className="font-semibold text-amber-100">Doğrudan Sipariş & Danışma</div>
-                  <a href={`tel:${companyInfo.phone}`} className="text-amber-400 font-medium hover:underline block mt-0.5">
+                  <a href={`tel:${companyInfo.phoneRaw}`} className="text-amber-400 font-medium hover:underline block mt-0.5">
                     {companyInfo.phone}
                   </a>
                 </div>
@@ -65,6 +66,16 @@ export default function ContactPage() {
                   <a href={`mailto:${companyInfo.salesEmail}`} className="text-amber-400 font-medium hover:underline block mt-0.5">
                     {companyInfo.salesEmail}
                   </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0">
+                  <FacebookMark className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-semibold text-amber-100">Facebook</div>
+                  <a href={companyInfo.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-amber-400 font-medium hover:underline block mt-0.5">DEMLAB Facebook Profili</a>
                 </div>
               </div>
 

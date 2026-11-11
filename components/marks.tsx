@@ -1,5 +1,14 @@
 type MarkProps = { className?: string; title?: string };
 
+export function FacebookMark({ className = "h-4 w-4", title = "Facebook" }: MarkProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} role="img" aria-label={title} fill="currentColor">
+      <title>{title}</title>
+      <path d="M13.6 21v-8h2.8l.4-3.1h-3.2V7.9c0-.9.3-1.5 1.6-1.5H17V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.5V13h2.8v8h3.3Z" />
+    </svg>
+  );
+}
+
 /** Hand-drawn DemlaB mark: a conical flask whose body is filled to the %96 line,
  *  with a curling vine leaf at the neck (the pumpkin that turns into a carriage). */
 export function DemlabMark({ className = "h-10 w-10", title = "DemlaB" }: MarkProps) {

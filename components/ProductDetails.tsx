@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Product, PackagingOption } from "@/data/products";
+import { companyInfo } from "@/data/company";
+import { calculateTotals } from "@/lib/commerce";
 import {
   FileText,
-  Download,
+  Send,
   Package,
   ShieldCheck,
   CheckCircle,
@@ -41,8 +44,7 @@ export default function ProductDetails({ product }: { product: Product }) {
   };
 
   const totalPrice = selectedPackaging.price * quantity;
-  const vatTotal = Math.round(totalPrice * 0.20);
-  const grandTotal = totalPrice + vatTotal;
+  const { vatAmount: vatTotal, shippingFee, grandTotal } = calculateTotals(totalPrice);
 
   return (
     <div className="space-y-12">
@@ -52,9 +54,12 @@ export default function ProductDetails({ product }: { product: Product }) {
           {/* Sol: Gerçek Ürün Fotoğrafı */}
           <div className="lg:col-span-4 flex justify-center">
             <div className="relative w-full max-w-sm rounded-2xl overflow-hidden border border-[#e59840]/40 shadow-2xl bg-[#0f0703] group">
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
+                width={600}
+                height={500}
+                priority
                 className="w-full h-64 sm:h-72 object-contain p-3 group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -111,7 +116,7 @@ export default function ProductDetails({ product }: { product: Product }) {
               <span>•</span>
               <span className="flex items-center gap-1.5">
                 <CreditCard className="w-4 h-4 text-[#d8892f]" />
-                <span>3D Güvenli Ödeme & Havale</span>
+                <span>Kapıda Ödeme & Havale</span>
               </span>
             </div>
           </div>
@@ -201,17 +206,18 @@ export default function ProductDetails({ product }: { product: Product }) {
                       <div className="text-xs font-semibold text-[#fef5ec] group-hover:text-[#f3bd68] transition">
                         {doc.title}
                       </div>
-                      <div className="text-[11px] text-[#9a7f6a]">Boyut: {doc.size} | PDF</div>
+                      <div className="text-[11px] text-[#9a7f6a]">Güncel belge talebi</div>
                     </div>
                   </div>
 
                   <a
-                    href={`/docs/${product.slug}-${doc.type.toLowerCase()}.pdf`}
-                    download
+                    href={`${companyInfo.whatsappUrl}?text=${encodeURIComponent(`Merhaba, ${product.name} için ${doc.title} belgesini talep ediyorum.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#f3bd68] bg-[#24140c] hover:bg-[#341d11] border border-[#e59840]/30 px-3 py-1.5 rounded-lg transition"
                   >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>İndir</span>
+                    <Send className="w-3.5 h-3.5" />
+                    <span>Talep Et</span>
                   </a>
                 </div>
               ))}
@@ -327,7 +333,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                   <div className="flex justify-between text-[#c6ad97]">
                     <span>Kapıya Getirim</span>
                     <span className="text-[#f3bd68] font-bold">
-                      {totalPrice > 5000 ? "ÜCRETSİZ" : "Standart Kargo"}
+                      {shippingFee === 0 ? "ÜCRETSİZ" : `${shippingFee} ₺`}
                     </span>
                   </div>
                   <div className="flex justify-between text-base font-extrabold text-[#fef5ec] pt-2 border-t border-[#3e2315]">
@@ -346,7 +352,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                 </button>
 
                 <div className="text-[11px] text-[#8e7460] text-center space-y-1">
-                  <div>🔒 256-Bit SSL ve 3D Güvenli Ödeme</div>
+                  <div>🔒 Fiyat ve stok doğrulamalı güvenli sipariş</div>
                   <div>🚚 Orijinal güvenlik mührüyle hızlı adrese sevkiyat</div>
                 </div>
               </div>

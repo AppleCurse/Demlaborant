@@ -1,5 +1,6 @@
 import { products } from "@/data/products";
-import { FileText, Download, ShieldCheck, Search, Sparkles } from "lucide-react";
+import { companyInfo } from "@/data/company";
+import { FileText, Send, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -69,17 +70,18 @@ export default function DocumentsPage() {
                       <FileText className="w-4 h-4 text-[#e59840]" />
                       <div>
                         <span className="font-semibold text-[#f0ded0]">{doc.title}</span>
-                        <span className="text-[10px] text-[#8e7460] block">{doc.type} • {doc.size}</span>
+                        <span className="text-[10px] text-[#8e7460] block">{doc.type} • Güncel belge talebi</span>
                       </div>
                     </div>
 
                     <a
-                      href={`/docs/${product.slug}-${doc.type.toLowerCase()}.pdf`}
-                      download
+                      href={`${companyInfo.whatsappUrl}?text=${encodeURIComponent(`Merhaba, ${product.name} için ${doc.title} belgesini talep ediyorum.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-[11px] font-bold text-[#f3bd68] bg-[#24140c] hover:bg-[#341d11] border border-[#e59840]/30 px-3 py-1.5 rounded-lg transition"
                     >
-                      <Download className="w-3 h-3" />
-                      <span>İndir</span>
+                      <Send className="w-3 h-3" />
+                      <span>Talep Et</span>
                     </a>
                   </div>
                 ))}

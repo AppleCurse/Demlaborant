@@ -1,17 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Cookie, Check, X } from "lucide-react";
+import { Cookie } from "lucide-react";
 import Link from "next/link";
 
 export default function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("demlab_cookie_consent");
-    if (!consent) {
-      setShow(true);
-    }
+    const frame = requestAnimationFrame(() => {
+      if (!localStorage.getItem("demlab_cookie_consent")) setShow(true);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const accept = () => {

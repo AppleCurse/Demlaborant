@@ -42,17 +42,54 @@ export const lots = pgTable("lots", {
 export const orders = pgTable("orders", {
   id: serial("id").primaryKey(),
   orderNo: text("order_no").notNull().unique(),
-  packageId: text("package_id").notNull(),
-  volume: integer("volume").notNull(),
-  price: integer("price").notNull(),
   fullName: text("full_name").notNull(),
+  email: text("email").notNull(),
   phone: text("phone").notNull(),
   city: text("city").notNull(),
   district: text("district").notNull(),
   address: text("address").notNull(),
+  deliveryNotes: text("delivery_notes"),
+  invoiceType: text("invoice_type").notNull().default("individual"),
+  companyName: text("company_name"),
+  taxOffice: text("tax_office"),
+  taxNumber: text("tax_number"),
   deliveryType: text("delivery_type").notNull(),
   paymentType: text("payment_type").notNull(),
-  status: text("status").notNull().default("HAZIRLANIYOR"),
+  subtotal: integer("subtotal").notNull(),
+  vatAmount: integer("vat_amount").notNull(),
+  shippingFee: integer("shipping_fee").notNull(),
+  grandTotal: integer("grand_total").notNull(),
+  status: text("status").notNull().default("SİPARİŞ ALINDI"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const orderItems = pgTable("order_items", {
+  id: serial("id").primaryKey(),
+  orderId: integer("order_id")
+    .notNull()
+    .references(() => orders.id, { onDelete: "cascade" }),
+  productSlug: text("product_slug").notNull(),
+  productName: text("product_name").notNull(),
+  size: text("size").notNull(),
+  unitPrice: integer("unit_price").notNull(),
+  quantity: integer("quantity").notNull(),
+  lineTotal: integer("line_total").notNull(),
+});
+
+export const inquiries = pgTable("inquiries", {
+  id: serial("id").primaryKey(),
+  referenceNo: text("reference_no").notNull().unique(),
+  companyName: text("company_name").notNull(),
+  taxOffice: text("tax_office"),
+  taxNumber: text("tax_number"),
+  contactName: text("contact_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  city: text("city").notNull(),
+  productName: text("product_name").notNull(),
+  quantity: text("quantity").notNull(),
+  notes: text("notes"),
+  status: text("status").notNull().default("YENİ"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -79,6 +116,8 @@ export const stories = pgTable("stories", {
 });
 
 export type Order = typeof orders.$inferSelect;
+export type OrderItem = typeof orderItems.$inferSelect;
+export type Inquiry = typeof inquiries.$inferSelect;
 export type Lot = typeof lots.$inferSelect;
 export type District = typeof districts.$inferSelect;
 export type PackageRow = typeof packages.$inferSelect;

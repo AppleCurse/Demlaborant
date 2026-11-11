@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       author, mood, title, content, transformation: transformation || "Ruh → Işık", likes: 0
     }).returning();
     return NextResponse.json(inserted[0]);
-  } catch (e:any) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+  } catch {
+    return NextResponse.json({ error: "Hikaye kaydedilemedi." }, { status: 500 });
   }
 }

@@ -1,27 +1,49 @@
 # DEMLAB — Zanaat & Laboratuvar Kimyasalları
 
-Zanaat, fermantasyon ve botanik ekstraksiyon laboratuvarı için geliştirilmiş modern Next.js e-ticaret ve sipariş platformu.
+Next.js 16 App Router ile geliştirilmiş ürün kataloğu, sepet, sipariş, teklif ve sipariş takip uygulaması.
 
 ## Özellikler
 
-- **Next.js 16 (App Router)** & **Turbopack**
-- **Tailwind CSS v4** ile tasarlanmış masif meşe ve amber lüks tema
-- **Akredite Analitik Saflık & Reaktif Derecesi** (%96 Özel Fermantasyon Çözeltileri)
-- **Parti Bazlı Bağımsız Analiz Sertifikası (CoA)** sorgulama sistemi (`/api/coa`)
-- **İstanbul İçi Hızlı Motokurye & İlçe Bazlı ETA Hesaplama**
-- **Drizzle ORM & PostgreSQL** veri tabanı entegrasyonu
-- **Sepet ve Kapıda Ödeme / Havale** sipariş akışı
+- Next.js 16, React 19, Tailwind CSS 4 ve TypeScript
+- PostgreSQL ve Drizzle ORM
+- Sunucu tarafında katalog fiyatı doğrulamalı, çok ürünlü sipariş kaydı
+- Kapıda kart/nakit, havale ve kurumsal ödeme seçenekleri
+- Sipariş numarası ve telefonla gerçek sipariş takibi
+- Veritabanına kaydedilen kurumsal teklif talepleri
+- Parti analiz sorgulama ve WhatsApp üzerinden güncel belge talebi
 
-## Kurulum ve Geliştirme
+## Kurulum
 
 ```bash
 npm install
+cp .env.example .env.local
+# .env.local içindeki DATABASE_URL değerini düzenleyin
+npm run db:migrate
 npm run dev
 ```
 
-Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açarak görüntüleyebilirsiniz.
+Uygulama `http://localhost:3000` adresinde çalışır. Ürün ve sepet sayfaları veritabanı olmadan görüntülenebilir; sipariş, takip, teklif ve analiz API'leri PostgreSQL bağlantısı gerektirir.
+
+## Kontroller
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+Veritabanı şeması değiştiğinde:
+
+```bash
+npm run db:generate
+npm run db:migrate
+```
 
 ## Dağıtım (Vercel)
 
-Proje Vercel ile tam uyumludur. Sıfır yapılandırma ile otomatik olarak dağıtılır.
-İsteğe bağlı olarak PostgreSQL bağlantısı için `DATABASE_URL` ortam değişkenini ekleyebilirsiniz.
+Projeyi Vercel'e bağlayın ve `DATABASE_URL` ortam değişkenini Production/Preview ortamlarına ekleyin. İlk kurulumda `drizzle/0000_pale_stone_men.sql` migration'ını veritabanına uygulayın veya `npm run db:migrate` komutunu çalıştırın.
+
+## İletişim
+
+- Telefon / WhatsApp: +90 530 016 94 23
+- Facebook: https://www.facebook.com/profile.php?id=61596232029684

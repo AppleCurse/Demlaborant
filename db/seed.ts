@@ -8,6 +8,16 @@ let seeded: Promise<void> | null = null;
 
 const PACKAGE_SEED = [
   {
+    id: "pkg-1l",
+    volume: 1,
+    price: 450,
+    title: "1 Litre",
+    badge: "Numune / Reçete Denemesi",
+    isPopular: false,
+    courierEligible: false,
+    description: "Küçük ölçekli reçete testleri için emniyet kapaklı amber cam şişe.",
+  },
+  {
     id: "pkg-5l",
     volume: 5,
     price: 1750,

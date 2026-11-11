@@ -1,5 +1,5 @@
 import { companyInfo } from "@/data/company";
-import { ShieldCheck, Award, FlaskConical, Users, CheckCircle2, Sparkles, Flame, Boxes } from "lucide-react";
+import { Award, FlaskConical, CheckCircle2 } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

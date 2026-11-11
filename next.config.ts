@@ -1,15 +1,9 @@
 import type { NextConfig } from "next";
 
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-
 const nextConfig: NextConfig = {
-  output: isGithubActions ? "export" : undefined,
-  basePath: isGithubActions ? "/Demlaborant" : "",
+  allowedDevOrigins: ["*.e2b.app"],
   images: {
-    unoptimized: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+    unoptimized: process.env.GITHUB_ACTIONS === "true",
   },
 };
 

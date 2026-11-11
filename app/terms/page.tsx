@@ -1,5 +1,5 @@
 import { companyInfo } from "@/data/company";
-import { Truck, RotateCcw, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Truck, RotateCcw, AlertTriangle } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

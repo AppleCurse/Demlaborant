@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calculator, Sparkles, AlertCircle, ArrowRight, Check, FlaskConical, Boxes } from "lucide-react";
+import { AlertCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function CalculatorPage() {

@@ -13,6 +13,7 @@ export type Product = {
   image: string;
   appearance?: string;
   purity?: string;
+  casNo?: string;
   basePrice: number;
   packagingOptions: PackagingOption[];
   documents: {
@@ -37,6 +38,7 @@ export const products: Product[] = [
     image: "/images/product-1l-amber.jpg",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",
+    casNo: "64-17-5",
     basePrice: 450,
     packagingOptions: [
       { size: "1 L Amber Cam Şişe", price: 450, inStock: true }
@@ -76,6 +78,7 @@ export const products: Product[] = [
     image: "/images/hero-plate.jpg",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",
+    casNo: "64-17-5",
     basePrice: 1750,
     packagingOptions: [
       { size: "5 L Mühürlü HDPE Bidon", price: 1750, inStock: true }
@@ -115,6 +118,7 @@ export const products: Product[] = [
     image: "/images/product-10l-hdpe.jpg",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",
+    casNo: "64-17-5",
     basePrice: 3000,
     packagingOptions: [
       { size: "10 L Mühürlü HDPE Bidon", price: 3000, inStock: true }
@@ -152,6 +156,7 @@ export const products: Product[] = [
     image: "/images/product-20l-hdpe.jpg",
     appearance: "Renksiz, berrak, homojen akışkan sıvı",
     purity: "%96.0 v/v Laboratuvar / Teknik Derece",
+    casNo: "64-17-5",
     basePrice: 5500,
     packagingOptions: [
       { size: "20 L Ağır Hizmet HDPE Bidon", price: 5500, inStock: true }
