@@ -32,7 +32,7 @@ export default function Header() {
             <span className="hidden md:inline-block text-[#4a2b19]">|</span>
             <span className="hidden md:flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-[#d8892f]" />
-              <span>9° Tek Formülasyon & Parti Bazlı Analiz Sertifikası (CoA)</span>
+              <span>%100 Analitik Saflık & Parti Bazlı Analiz Sertifikası (CoA)</span>
             </span>
           </div>
 

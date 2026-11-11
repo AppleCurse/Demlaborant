@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "İletişim & Atölye Siparişi | DEMLAB Zanaat & Fermantasyon Laboratuvarı",
-  description: "%9 Zanaat çözeltisi, meşe fıçı ekstraksiyonu ve laboratuvar hammaddeleri sipariş ve teknik danışmanlık.",
+  description: "%96 Zanaat çözeltisi, meşe fıçı ekstraksiyonu ve laboratuvar hammaddeleri sipariş ve teknik danışmanlık.",
 };
 
 export default function ContactPage() {
@@ -21,7 +21,7 @@ export default function ContactPage() {
           DEMLAB İletişim & Özel Çözelti Talebi
         </h1>
         <p className="text-xs sm:text-sm text-amber-200/70 mt-3 leading-relaxed">
-          Tek formülasyonlu 9° DEMLAB ürünü, ambalaj seçenekleri ve toptan sevkiyatlar için zanaat atölyemizle doğrudan iletişime geçebilirsiniz.
+          %96 saflıktaki özel fermantasyon ve maserasyon laboratuvar çözeltisi, meşe fıçı uyumlu ekstraksiyon çözümleri ve toptan sevkiyatlar için zanaat atölyemizle doğrudan iletişime geçebilirsiniz.
         </p>
       </div>
 

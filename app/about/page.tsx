@@ -29,8 +29,8 @@ export default function AboutPage() {
       {/* Rakamlarla & Değerlerimiz */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="oak-card p-6 rounded-2xl text-center">
-          <div className="text-3xl sm:text-4xl font-extrabold text-[#f3bd68] font-mono">%9.0</div>
-          <div className="text-xs font-bold text-[#fef5ec] font-serif mt-2">Tek Ürün Derecesi</div>
+          <div className="text-3xl sm:text-4xl font-extrabold text-[#f3bd68] font-mono">%96.0</div>
+          <div className="text-xs font-bold text-[#fef5ec] font-serif mt-2">Analitik Saflık</div>
           <div className="text-[11px] text-[#937b67] mt-1">Parti bazlı CoA raporları</div>
         </div>
         <div className="oak-card p-6 rounded-2xl text-center">
@@ -82,7 +82,7 @@ export default function AboutPage() {
           </div>
           <h2 className="text-xl font-bold text-[#fef5ec] font-serif">Atölye ve Teknik Kadro</h2>
           <p className="text-xs sm:text-sm text-[#c6ad97] leading-relaxed">
-            Kadıköy merkezli atölyemizdeki ekibimiz, tek formülasyonlu 9° ürünümüzün ambalaj seçimi, kullanım koşulları ve sevkiyatı hakkında aktif teknik danışmanlık sunar.
+            Kadıköy merkezli atölyemizdeki ekibimiz, tek formülasyonlu 96° ürünümüzün ambalaj seçimi, kullanım koşulları ve sevkiyatı hakkında aktif teknik danışmanlık sunar.
           </p>
           <div className="p-4 bg-[#180d07] rounded-xl border border-[#3e2315] text-xs text-[#baa08a] space-y-1">
             <strong className="text-[#f3bd68] block">Atölye İletişim Hattı:</strong>

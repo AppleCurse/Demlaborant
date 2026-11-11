@@ -41,21 +41,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         const saved = JSON.parse(localStorage.getItem("demlab_cart") ?? "[]") as unknown;
         if (Array.isArray(saved)) {
           setItems(
-            saved
-              .filter(
-                (item): item is CartItem =>
-                  item && typeof item.id === "string" && typeof item.slug === "string" &&
-                  typeof item.size === "string" && Number.isInteger(item.quantity) && item.quantity > 0,
-              )
-              .map((item) => {
-                const slug = item.slug.replace("demlab-96-cozelti", "demlab-9-cozelti");
-                return {
-                  ...item,
-                  id: `${slug}-${item.size}`,
-                  slug,
-                  name: item.name.replace("96°", "9°"),
-                };
-              }),
+            saved.filter(
+              (item): item is CartItem =>
+                item && typeof item.id === "string" && typeof item.slug === "string" &&
+                typeof item.size === "string" && Number.isInteger(item.quantity) && item.quantity > 0,
+            ),
           );
         }
       } catch {

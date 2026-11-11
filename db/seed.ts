@@ -65,8 +65,8 @@ const DISTRICT_SEED = [
 
 const LOT_SEED = [
   {
-    lotCode: "DLM-09-2026-B4",
-    abv: "%9.22",
+    lotCode: "DLM-96-2026-B4",
+    abv: "%96.22",
     residue: "< 0.0005%",
     volatileAcidity: "< 12 ppm",
     heavyMetals: "Tespit Edilemedi",
@@ -74,8 +74,8 @@ const LOT_SEED = [
     method: "Akredite Spektrometre + Gaz Kromatografisi",
   },
   {
-    lotCode: "DLM-09-2026-A2",
-    abv: "%9.08",
+    lotCode: "DLM-96-2026-A2",
+    abv: "%96.08",
     residue: "< 0.0006%",
     volatileAcidity: "< 11 ppm",
     heavyMetals: "Tespit Edilemedi",
@@ -83,8 +83,8 @@ const LOT_SEED = [
     method: "Akredite Spektrometre + Gaz Kromatografisi",
   },
   {
-    lotCode: "DLM-09-2025-C7",
-    abv: "%9.41",
+    lotCode: "DLM-96-2025-C7",
+    abv: "%96.41",
     residue: "< 0.0004%",
     volatileAcidity: "< 9 ppm",
     heavyMetals: "Tespit Edilemedi",

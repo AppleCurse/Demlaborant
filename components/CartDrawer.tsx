@@ -65,7 +65,7 @@ export default function CartDrawer() {
                 </div>
                 <h3 className="text-base font-semibold text-[#f0ded0] font-serif">Sepetiniz Boş</h3>
                 <p className="text-xs text-[#a98f7b] max-w-xs mx-auto">
-                  Kataloğumuzdan %9 çözelti veya istediğiniz ambalajı seçerek ekleyebilirsiniz.
+                  Kataloğumuzdan %96 çözelti veya istediğiniz ambalajı seçerek ekleyebilirsiniz.
                 </p>
                 <div className="pt-2">
                   <Link

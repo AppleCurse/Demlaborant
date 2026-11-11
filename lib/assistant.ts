@@ -16,17 +16,17 @@ export function answerQuestion(question: string): AssistantAnswer {
 
   if (/(seyrelt|dozaj|su ekle)/.test(query)) {
     return {
-      text: "DEMLAB ürünü seyreltilerek farklı dereceler elde edilen bir ürün değildir. Tek formülasyonumuz 9 derecedir ve 1, 5, 10 ve 20 litre ambalajlarda sunulur.",
+      text: "DEMLAB ürünü seyreltilerek farklı dereceler elde edilen bir ürün değildir. Tek formülasyonumuz 96 derecedir ve 1, 5, 10 ve 20 litre ambalajlarda sunulur.",
       href: "/products",
-      linkLabel: "9° Ürünü İncele",
+      linkLabel: "96° Ürünü İncele",
     };
   }
 
   if (/(derece|alkol oranı)/.test(query)) {
     return {
-      text: "DEMLAB tek formülasyondur ve 9 derecedir. Farklı derece veya seyreltme seçeneği bulunmaz; yalnızca 1, 5, 10 ve 20 litre ambalaj seçenekleri vardır.",
+      text: "DEMLAB tek formülasyondur ve 96 derecedir. Farklı derece veya seyreltme seçeneği bulunmaz; yalnızca 1, 5, 10 ve 20 litre ambalaj seçenekleri vardır.",
       href: "/products",
-      linkLabel: "9° Ürünü İncele",
+      linkLabel: "96° Ürünü İncele",
     };
   }
 
@@ -92,7 +92,7 @@ export function answerQuestion(question: string): AssistantAnswer {
 
   if (/(1 ?l|5 ?l|10 ?l|20 ?l|ambalaj|ürün|şişe|bidon)/.test(query)) {
     return {
-      text: "DEMLAB 9° ürününü 1 litre amber cam şişe ile 5, 10 ve 20 litre mühürlü HDPE bidon seçenekleriyle sunuyoruz. Ürün kartlarından ambalaj ve fiyat detaylarını inceleyebilirsiniz.",
+      text: "DEMLAB 96 çözeltisini 1 litre amber cam şişe ile 5, 10 ve 20 litre mühürlü HDPE bidon seçenekleriyle sunuyoruz. Ürün kartlarından ambalaj ve fiyat detaylarını inceleyebilirsiniz.",
       href: "/products",
       linkLabel: "Ambalajları İncele",
     };
@@ -100,7 +100,7 @@ export function answerQuestion(question: string): AssistantAnswer {
 
   if (/(merhaba|selam|iyi günler|naber|nasılsın)/.test(query)) {
     return {
-      text: "Merhaba, ben DEMLAB sesli asistanım. 9° ürünümüz, fiyatlar, teslimat, belgeler ve sipariş takibi konularında size yardımcı olabilirim.",
+      text: "Merhaba, ben DEMLAB sesli asistanım. 96° ürünümüz, fiyatlar, teslimat, belgeler ve sipariş takibi konularında size yardımcı olabilirim.",
     };
   }
 

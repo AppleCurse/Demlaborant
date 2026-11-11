@@ -6,10 +6,10 @@ import { coaRecords } from "@/db/schema";
 export const dynamic = "force-dynamic";
 
 const SEED_LOTS = [
-  { lotNo: "DLM-09-2026-B4", purity: "%9.22", residue: "< 0.0005%", acidity: "< 12 ppm", heavyMetal: "Tespit Edilemedi", testDate: "2026-10-05", verified: true },
-  { lotNo: "DLM-09-2026-A1", purity: "%9.18", residue: "< 0.0008%", acidity: "< 15 ppm", heavyMetal: "Tespit Edilemedi", testDate: "2026-09-12", verified: true },
-  { lotNo: "DLM-09-2025-Z9", purity: "%9.02", residue: "< 0.001%", acidity: "< 10 ppm", heavyMetal: "Tespit Edilemedi", testDate: "2025-12-01", verified: true },
-  { lotNo: "DLM-09-2026-C7", purity: "%8.98", residue: "< 0.0012%", acidity: "< 18 ppm", heavyMetal: "Eser Miktar", testDate: "2026-08-20", verified: true },
+  { lotNo: "DLM-96-2026-B4", purity: "%96.22", residue: "< 0.0005%", acidity: "< 12 ppm", heavyMetal: "Tespit Edilemedi", testDate: "2026-10-05", verified: true },
+  { lotNo: "DLM-96-2026-A1", purity: "%96.18", residue: "< 0.0008%", acidity: "< 15 ppm", heavyMetal: "Tespit Edilemedi", testDate: "2026-09-12", verified: true },
+  { lotNo: "DLM-96-2025-Z9", purity: "%96.02", residue: "< 0.001%", acidity: "< 10 ppm", heavyMetal: "Tespit Edilemedi", testDate: "2025-12-01", verified: true },
+  { lotNo: "DLM-96-2026-C7", purity: "%95.98", residue: "< 0.0012%", acidity: "< 18 ppm", heavyMetal: "Eser Miktar", testDate: "2026-08-20", verified: true },
 ];
 
 async function findLot(lot: string) {

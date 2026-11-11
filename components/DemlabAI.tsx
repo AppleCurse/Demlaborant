@@ -15,7 +15,7 @@ type ChatMessage = AssistantAnswer & {
 const greeting: ChatMessage = {
   id: 0,
   role: "assistant",
-  text: "Merhaba, ben DEMLAB sesli asistanım. 9° ürünümüz, fiyat, teslimat, belge veya sipariş takibi hakkında bana soru sorabilirsiniz.",
+  text: "Merhaba, ben DEMLAB sesli asistanım. 96° ürünümüz, fiyat, teslimat, belge veya sipariş takibi hakkında bana soru sorabilirsiniz.",
 };
 
 const quickQuestions = ["Ürün kaç derece?", "Fiyatlar ne kadar?", "Siparişimi takip et"];

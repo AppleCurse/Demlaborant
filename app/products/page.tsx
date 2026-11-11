@@ -48,7 +48,7 @@ export default function ProductsPage() {
             <Search className="w-4 h-4 text-[#8f7561] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="%9 çözelti, terpen, CAS no veya ürün ara..."
+              placeholder="%96 çözelti, terpen, CAS no veya ürün ara..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full text-xs pl-10 pr-4 py-2.5 rounded-xl border border-[#442616] bg-[#190d07] text-[#f7ede2] focus:outline-none focus:border-[#e59840] transition"

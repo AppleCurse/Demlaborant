@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
-  const featuredProduct = products.find((p) => p.slug === "demlab-9-cozelti-5l") || products[0];
+  const featuredProduct = products.find((p) => p.slug === "demlab-96-cozelti-5l") || products[0];
 
   return (
     <main className="space-y-16 sm:space-y-24 pb-20">
@@ -39,7 +39,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#fff5ea] font-serif leading-[1.12]">
-              Meşe Dokusu, Zanaat Damıtma & <span className="amber-title">%9 Özel Fermantasyon</span> Çözeltileri
+              Meşe Dokusu, Zanaat Damıtma & <span className="amber-title">%96 Özel Fermantasyon</span> Çözeltileri
             </h1>
 
             <p className="text-sm sm:text-base text-[#d8c2ad] max-w-2xl leading-relaxed">
@@ -66,7 +66,7 @@ export default function HomePage() {
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#3e2315] text-xs text-[#cbb29c]">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#e59840] shrink-0" />
-                <span>9° Sabit Formülasyon</span>
+                <span>%100 Analitik Saflık</span>
               </div>
               <div className="flex items-center gap-2">
                 <FileCheck2 className="w-4 h-4 text-[#d8892f] shrink-0" />
@@ -96,7 +96,7 @@ export default function HomePage() {
               </div>
 
               <h3 className="text-xl font-bold text-[#fef5ec] font-serif mb-2 leading-snug">
-                DEMLAB 9° Laboratuvar Çözeltisi
+                DEMLAB 96° Laboratuvar Çözeltisi
               </h3>
               <p className="text-xs text-[#cbb29c] mb-5 leading-relaxed">
                 Hassas zanaat fermantasyonları ve ekstraksiyon için 4 farklı orijinal ambalaj seçeneği:
@@ -168,7 +168,7 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-[#2d180d] text-[#e59840] border border-[#e59840]/30 flex items-center justify-center mb-4">
               <Award className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-[#fef5ec] mb-1 font-serif">9° Tek Formülasyon</h4>
+            <h4 className="text-base font-bold text-[#fef5ec] mb-1 font-serif">%96 Analitik Derece</h4>
             <p className="text-xs text-[#c6ad97] leading-relaxed">
               Gaz kromatografisi (GC) ile test edilmiş, buharlaşma kalıntısı minimum seviyede yüksek saflık güvencesi.
             </p>
@@ -206,7 +206,7 @@ export default function HomePage() {
               Zanaat Kataloğu
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#fef5ec] font-serif">
-              DEMLAB %9 Çözelti Ambalaj Seçenekleri
+              DEMLAB %96 Çözelti Ambalaj Seçenekleri
             </h3>
             <p className="text-xs text-[#c6ad97] mt-1">
               1 L numunelik cam şişeden 20 L sanayi bidonuna kadar ihtiyacınıza uygun ambalajlar.
@@ -305,7 +305,7 @@ export default function HomePage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
               <Link
-                href="/products/demlab-9-cozelti-10l"
+                href="/products/demlab-96-cozelti-10l"
                 className="inline-flex items-center gap-2 bg-[#25140b] hover:bg-[#341d10] text-[#f5dfce] border border-[#e59840]/30 font-semibold text-xs px-5 py-3 rounded-xl transition"
               >
                 10L Kurye Bidonunu Seç
