@@ -35,7 +35,7 @@ export default function RakiBottleAI({ className = "h-24 w-14", speaking = false
       <circle cx="39" cy="115" r=".8" fill="#fff" />
       <circle cx="59" cy="115" r=".8" fill="#fff" />
       <path d="M41 126c5 6 13 6 18 0" fill="none" stroke="#6f3c16" strokeWidth="2.2" strokeLinecap="round" />
-      <text x="50" y="139" textAnchor="middle" fill="#9e591b" fontSize="6" fontWeight="900" fontFamily="Arial, sans-serif">AI • 96</text>
+      <text x="50" y="139" textAnchor="middle" fill="#9e591b" fontSize="6" fontWeight="900" fontFamily="Arial, sans-serif">AI • 9</text>
       <g className={speaking ? "animate-pulse" : undefined} fill="none" stroke="#f3bd68" strokeWidth="2.5" strokeLinecap="round">
         <path d="M82 106c5 5 5 13 0 18" />
         <path d="M87 101c9 9 9 21 0 30" opacity={speaking ? 1 : 0.35} />

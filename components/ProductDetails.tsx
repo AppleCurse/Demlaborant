@@ -68,7 +68,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                   <Sparkles className="w-3.5 h-3.5 text-[#e59840]" />
                   DEMLAB Orijinal Mühürlü
                 </span>
-                <span className="font-mono text-[#f3bd68]">96° Zanaat</span>
+                <span className="font-mono text-[#f3bd68]">9° Zanaat</span>
               </div>
             </div>
           </div>

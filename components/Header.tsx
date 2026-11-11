@@ -13,7 +13,6 @@ export default function Header() {
   const navigation = [
     { name: "Ana Sayfa", href: "/" },
     { name: "Çözelti Ürünleri", href: "/products" },
-    { name: "Dozaj & Seyreltme Hesaplayıcı", href: "/calculator" },
     { name: "Sevkiyat Takibi", href: "/tracking" },
     { name: "TDS / Analiz Belgeleri", href: "/documents" },
     { name: "Atölye & Hakkımızda", href: "/about" },
@@ -33,7 +32,7 @@ export default function Header() {
             <span className="hidden md:inline-block text-[#4a2b19]">|</span>
             <span className="hidden md:flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-[#d8892f]" />
-              <span>%100 Analitik Saflık & Parti Bazlı Analiz Sertifikası (CoA)</span>
+              <span>9° Tek Formülasyon & Parti Bazlı Analiz Sertifikası (CoA)</span>
             </span>
           </div>
 

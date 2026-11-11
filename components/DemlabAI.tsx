@@ -15,10 +15,10 @@ type ChatMessage = AssistantAnswer & {
 const greeting: ChatMessage = {
   id: 0,
   role: "assistant",
-  text: "Merhaba, ben DEMLAB sesli asistanım. Fiyat, seyreltme, teslimat, belge veya sipariş takibi hakkında bana soru sorabilirsiniz.",
+  text: "Merhaba, ben DEMLAB sesli asistanım. 9° ürünümüz, fiyat, teslimat, belge veya sipariş takibi hakkında bana soru sorabilirsiniz.",
 };
 
-const quickQuestions = ["Fiyatlar ne kadar?", "20 litre 45 derece", "Siparişimi takip et"];
+const quickQuestions = ["Ürün kaç derece?", "Fiyatlar ne kadar?", "Siparişimi takip et"];
 
 export default function DemlabAI() {
   const [isOpen, setIsOpen] = useState(false);

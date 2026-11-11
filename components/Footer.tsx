@@ -71,9 +71,6 @@ export default function Footer() {
               <Link href="/products" className="hover:text-[#f3bd68] transition">Çözelti Ürünleri</Link>
             </li>
             <li>
-              <Link href="/calculator" className="hover:text-[#f3bd68] transition">Dozaj & Seyreltme Hesaplayıcı</Link>
-            </li>
-            <li>
               <Link href="/documents" className="hover:text-[#f3bd68] transition">Teknik Analiz Formları (CoA / TDS)</Link>
             </li>
             <li>

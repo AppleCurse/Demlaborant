@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Teslimat, İade ve Dağıtım Koşulları | DEMLAB",
-  description: "DEMLAB %96 zanaat çözeltisi ve fermantasyon hammaddeleri için gizli kargo, teslimat ve iade prosedürleri.",
+  description: "DEMLAB %9 zanaat çözeltisi ve fermantasyon hammaddeleri için gizli kargo, teslimat ve iade prosedürleri.",
 };
 
 export default function TermsPage() {

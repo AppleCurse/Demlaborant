@@ -9,7 +9,7 @@ export function FacebookMark({ className = "h-4 w-4", title = "Facebook" }: Mark
   );
 }
 
-/** Hand-drawn DemlaB mark: a conical flask whose body is filled to the %96 line,
+/** Hand-drawn DemlaB mark: a conical flask whose body is filled to the %9 line,
  *  with a curling vine leaf at the neck (the pumpkin that turns into a carriage). */
 export function DemlabMark({ className = "h-10 w-10", title = "DemlaB" }: MarkProps) {
   return (

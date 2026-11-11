@@ -10,7 +10,7 @@ import CookieBanner from "@/components/CookieBanner";
 export const metadata: Metadata = {
   title: "DEMLAB | Zanaat, Fermantasyon & Ekstraksiyon Laboratuvarı",
   description:
-    "Özel fermantasyon prosesleriniz, biyokimyasal reaksiyonlar ve botanik ekstraksiyonlar için yüksek saflıkta %96'lık laboratuvar çözeltileri ve zanaat hammaddeleri.",
+    "Özel fermantasyon prosesleriniz ve botanik ekstraksiyonlar için tek formülasyonlu 9° DEMLAB ürünü; 1 L, 5 L, 10 L ve 20 L ambalaj seçenekleriyle.",
 };
 
 export default function RootLayout({

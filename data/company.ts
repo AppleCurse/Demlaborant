@@ -18,7 +18,7 @@ export const companyInfo = {
   salesEmail: "siparis@demlab.com.tr",
   workingHours: "Pazartesi - Cumartesi: 09:00 - 19:30 (İstanbul İçi Motokurye 7/24 Aktif)",
   certifications: [
-    "Akredite Analitik Saflık & Reaktif Derecesi (≥ %96.0 v/v)",
+    "Tek Formülasyon • 9° Ürün Derecesi",
     "Parti Bazlı Bağımsız Analiz Sertifikası (CoA)",
     "Botanik Ekstraksiyon & Zanaatkar Fermantasyon Uygunluğu",
     "Çift Katman Mühürlü Emniyetli HDPE Ambalaj"

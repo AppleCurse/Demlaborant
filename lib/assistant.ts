@@ -11,32 +11,22 @@ function normalize(value: string) {
   return value.toLocaleLowerCase("tr-TR").trim();
 }
 
-function numberFrom(value: string | undefined) {
-  return Number(value?.replace(",", "."));
-}
-
 export function answerQuestion(question: string): AssistantAnswer {
   const query = normalize(question).slice(0, 500);
 
-  const hasVolumeAndDegree = /\d+(?:[.,]\d+)?\s*(?:l\b|lt\b|litre)/.test(query) && /\d+(?:[.,]\d+)?\s*(?:°|derece|abv)/.test(query);
-  if (/(seyrelt|dozaj|hesap|su ekle)/.test(query) || hasVolumeAndDegree) {
-    const volumeMatch = query.match(/(\d+(?:[.,]\d+)?)\s*(?:l\b|lt\b|litre)/);
-    const abvMatch = query.match(/%?\s*(\d+(?:[.,]\d+)?)\s*(?:°|derece|abv)/);
-    const targetVolume = numberFrom(volumeMatch?.[1]);
-    const targetAbv = numberFrom(abvMatch?.[1]);
-    if (targetVolume > 0 && targetAbv > 0 && targetAbv < 96) {
-      const solution = targetVolume * targetAbv / 96;
-      const water = targetVolume - solution;
-      return {
-        text: `${targetVolume} litre yüzde ${targetAbv} karışım için yaklaşık ${solution.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} litre DEMLAB 96 ve ${water.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} litre su gerekir. Sıcaklık ve hacim büzülmesi nedeniyle laboratuvar ölçümüyle doğrulayın. Ayrıntılı hesap için hesaplayıcıyı açabilirsiniz.`,
-        href: "/calculator",
-        linkLabel: "Hesaplayıcıyı Aç",
-      };
-    }
+  if (/(seyrelt|dozaj|su ekle)/.test(query)) {
     return {
-      text: "Hedef hacmi ve dereceyi birlikte yazın. Örneğin: 20 litre 45 derece. Seyreltme oranını hemen hesaplayayım.",
-      href: "/calculator",
-      linkLabel: "Dozaj Hesaplayıcı",
+      text: "DEMLAB ürünü seyreltilerek farklı dereceler elde edilen bir ürün değildir. Tek formülasyonumuz 9 derecedir ve 1, 5, 10 ve 20 litre ambalajlarda sunulur.",
+      href: "/products",
+      linkLabel: "9° Ürünü İncele",
+    };
+  }
+
+  if (/(derece|alkol oranı)/.test(query)) {
+    return {
+      text: "DEMLAB tek formülasyondur ve 9 derecedir. Farklı derece veya seyreltme seçeneği bulunmaz; yalnızca 1, 5, 10 ve 20 litre ambalaj seçenekleri vardır.",
+      href: "/products",
+      linkLabel: "9° Ürünü İncele",
     };
   }
 
@@ -102,7 +92,7 @@ export function answerQuestion(question: string): AssistantAnswer {
 
   if (/(1 ?l|5 ?l|10 ?l|20 ?l|ambalaj|ürün|şişe|bidon)/.test(query)) {
     return {
-      text: "DEMLAB 96 çözeltisini 1 litre amber cam şişe ile 5, 10 ve 20 litre mühürlü HDPE bidon seçenekleriyle sunuyoruz. Ürün kartlarından ambalaj ve fiyat detaylarını inceleyebilirsiniz.",
+      text: "DEMLAB 9° ürününü 1 litre amber cam şişe ile 5, 10 ve 20 litre mühürlü HDPE bidon seçenekleriyle sunuyoruz. Ürün kartlarından ambalaj ve fiyat detaylarını inceleyebilirsiniz.",
       href: "/products",
       linkLabel: "Ambalajları İncele",
     };
@@ -110,12 +100,12 @@ export function answerQuestion(question: string): AssistantAnswer {
 
   if (/(merhaba|selam|iyi günler|naber|nasılsın)/.test(query)) {
     return {
-      text: "Merhaba, ben DEMLAB sesli asistanım. Ürün fiyatları, seyreltme hesabı, teslimat, belgeler ve sipariş takibi konularında size yardımcı olabilirim.",
+      text: "Merhaba, ben DEMLAB sesli asistanım. 9° ürünümüz, fiyatlar, teslimat, belgeler ve sipariş takibi konularında size yardımcı olabilirim.",
     };
   }
 
   return {
-    text: "Size en iyi şekilde yardımcı olmak için sorunuzu fiyat, ambalaj, seyreltme, teslimat, belge veya sipariş takibi başlıklarından biriyle yazabilir misiniz? Örneğin: 20 litre 45 derece veya 10 litre fiyatı.",
+    text: "Size en iyi şekilde yardımcı olmak için sorunuzu ürün derecesi, fiyat, ambalaj, teslimat, belge veya sipariş takibi başlıklarından biriyle yazabilir misiniz? Örneğin: Ürün kaç derece veya 10 litre fiyatı.",
     href: "/contact",
     linkLabel: "Ekibimize Sor",
   };

@@ -8,8 +8,8 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      q: "%96 Laboratuvar çözeltisi fermantasyon ve meşe fıçı maserasyonuna uygun mudur?",
-      a: "Evet. DEMLAB %96 çözeltimiz, özel fermantasyon prosesleri, meşe fıçı dinlendirmeleri ve botanik ekstraksiyonlar için özel olarak optimize edilmiştir. Yüksek saflık profili sayesinde meşe ağacından gelen doğal vanilin, lakton ve tanen bileşenlerini bozmadan homojen çözünürlük sağlar."
+      q: "%9 Laboratuvar çözeltisi fermantasyon ve meşe fıçı maserasyonuna uygun mudur?",
+      a: "Evet. DEMLAB %9 çözeltimiz, özel fermantasyon prosesleri, meşe fıçı dinlendirmeleri ve botanik ekstraksiyonlar için özel olarak optimize edilmiştir. Yüksek saflık profili sayesinde meşe ağacından gelen doğal vanilin, lakton ve tanen bileşenlerini bozmadan homojen çözünürlük sağlar."
     },
     {
       q: "5 Litre, 10 Litre ve 20 Litre ambalajlar sızdırmaz mühürlü müdür?",
@@ -24,8 +24,8 @@ export default function FAQSection() {
       a: "Siparişiniz onaylandığı gün lot kontrolünden geçerek hazırlanır ve 1-2 iş günü içerisinde korumalı sevkiyatla adresinize ulaştırılır."
     },
     {
-      q: "Dozaj ve seyreltme oranları için teknik destek alabilir miyim?",
-      a: "Evet. Sitemizdeki Dozaj Hesaplayıcı aracını kullanarak tank veya fıçı hacminize göre tam hesap yapabilir veya sağ alttaki WhatsApp hattımızdan teknik kimyagerimizle birebir görüşebilirsiniz."
+      q: "Ürünün farklı derece veya seyreltme seçenekleri var mı?",
+      a: "Hayır. DEMLAB tek formülasyondur ve 9 derecedir. Yalnızca 1 L, 5 L, 10 L ve 20 L ambalaj seçenekleri bulunur; seyreltme veya farklı derece seçeneği sunulmaz."
     }
   ];
 
