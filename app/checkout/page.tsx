@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Building2, CheckCircle2, CreditCard, MapPin, PackageCheck, Truck } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { track } from "@vercel/analytics";
 
 type PaymentMethod = "door-card" | "door-cash" | "transfer" | "corporate";
 
@@ -43,6 +44,7 @@ export default function CheckoutPage() {
     event.preventDefault();
     setIsSubmitting(true);
     setError("");
+    track("begin_checkout", { value: grandTotal, item_count: items.reduce((sum, item) => sum + item.quantity, 0), payment: paymentMethod });
 
     try {
       const response = await fetch("/api/orders", {

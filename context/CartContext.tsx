@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { calculateTotals } from "@/lib/commerce";
+import { track } from "@vercel/analytics";
 
 export type CartItem = {
   id: string;
@@ -69,6 +70,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const addToCart = (item: Omit<CartItem, "id" | "quantity">, quantity = 1) => {
     const id = `${item.slug}-${item.size}`;
     const safeQuantity = Math.max(1, Math.min(99, Math.floor(quantity)));
+    track("add_to_cart", { product: item.slug, package: item.size, price: item.price, quantity: safeQuantity });
     setItems((previous) => {
       const existing = previous.find((candidate) => candidate.id === id);
       if (existing) {

@@ -1,6 +1,7 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, CheckCircle2, FileText, Package, Truck } from "lucide-react";
@@ -16,6 +17,7 @@ function OrderSuccessContent() {
   const searchParams = useSearchParams();
   const orderNo = searchParams.get("orderNo") ?? "";
   const [order, setOrder] = useState<SavedOrder | null>(null);
+  const trackedOrder = useRef("");
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -28,6 +30,12 @@ function OrderSuccessContent() {
     });
     return () => cancelAnimationFrame(frame);
   }, [orderNo]);
+
+  useEffect(() => {
+    if (!order || trackedOrder.current === order.orderNo) return;
+    trackedOrder.current = order.orderNo;
+    track("purchase", { order_no: order.orderNo, value: order.grandTotal, item_count: order.itemCount });
+  }, [order]);
 
   if (!orderNo) {
     return (

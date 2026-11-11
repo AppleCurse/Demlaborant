@@ -6,6 +6,7 @@ import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
 import DemlabAI from "@/components/DemlabAI";
 import CookieBanner from "@/components/CookieBanner";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "DEMLAB | Zanaat, Fermantasyon & Ekstraksiyon Laboratuvarı",
@@ -28,6 +29,7 @@ export default function RootLayout({
           <DemlabAI />
           <CookieBanner />
           <Footer />
+          <Analytics />
         </CartProvider>
       </body>
     </html>

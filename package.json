@@ -12,6 +12,10 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.0",
+    "@vercel/analytics": "^2.0.1",
+    "ai": "^7.0.169",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.2",
     "framer-motion": "^14.3.0",

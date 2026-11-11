@@ -104,6 +104,17 @@ export const coaRecords = pgTable("coa_records", {
   verified: boolean("verified").notNull().default(true),
 });
 
+export const documents = pgTable("documents", {
+  id: serial("id").primaryKey(),
+  lotNo: text("lot_no").notNull(),
+  documentType: text("document_type").notNull(),
+  fileName: text("file_name").notNull(),
+  filePath: text("file_path").notNull().unique(),
+  publicUrl: text("public_url").notNull(),
+  uploadedBy: text("uploaded_by").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const stories = pgTable("stories", {
   id: serial("id").primaryKey(),
   author: text("author").notNull(),
@@ -122,4 +133,5 @@ export type Lot = typeof lots.$inferSelect;
 export type District = typeof districts.$inferSelect;
 export type PackageRow = typeof packages.$inferSelect;
 export type CoaRecord = typeof coaRecords.$inferSelect;
+export type DocumentRecord = typeof documents.$inferSelect;
 export type Story = typeof stories.$inferSelect;

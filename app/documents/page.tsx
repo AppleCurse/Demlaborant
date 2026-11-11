@@ -2,13 +2,19 @@ import { products } from "@/data/products";
 import { companyInfo } from "@/data/company";
 import { FileText, Send, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
+import { desc } from "drizzle-orm";
+import { db } from "@/db";
+import { documents } from "@/db/schema";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Teknik Belgeler & Analiz Sertifikaları (CoA / TDS / SDS) | DEMLAB",
   description: "Özel fermantasyon çözeltileri ve laboratuvar kimyasalları için resmi Analiz Sertifikaları (CoA), Teknik Veri Formları (TDS) ve Güvenlik Bilgi Formları (SDS).",
 };
 
-export default function DocumentsPage() {
+export default async function DocumentsPage() {
+  const uploadedDocuments = await db.select().from(documents).orderBy(desc(documents.createdAt)).limit(100).catch(() => []);
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-16 space-y-12">
       {/* Başlık */}
@@ -34,6 +40,22 @@ export default function DocumentsPage() {
           </p>
         </div>
       </div>
+
+      {uploadedDocuments.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-lg font-bold text-[#fef5ec] font-serif">Lot Bazlı İndirilebilir PDF Belgeleri</h2>
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {uploadedDocuments.map((document) => (
+              <a key={document.id} href={document.publicUrl} target="_blank" rel="noopener noreferrer" className="oak-card rounded-2xl p-5 transition hover:border-[#e59840]/60">
+                <FileText className="h-6 w-6 text-[#e59840]" />
+                <strong className="mt-3 block text-sm text-[#fff5ea]">{document.lotNo} • {document.documentType}</strong>
+                <span className="mt-1 block text-xs text-[#a98f7b]">{document.fileName}</span>
+                <span className="mt-3 inline-block text-xs font-bold text-[#f3bd68]">PDF indir / görüntüle →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Doküman Listesi */}
       <div className="space-y-8">

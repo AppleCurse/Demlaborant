@@ -26,6 +26,7 @@ export default function DemlabAI() {
   const [input, setInput] = useState("");
   const [soundOn, setSoundOn] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const nextId = useRef(1);
   const scrollEnd = useRef<HTMLDivElement>(null);
 
@@ -65,14 +66,31 @@ export default function DemlabAI() {
     }
   };
 
-  const sendQuestion = (question: string) => {
+  const sendQuestion = async (question: string) => {
     const cleanQuestion = question.trim();
-    if (!cleanQuestion) return;
-    const answer = answerQuestion(cleanQuestion);
+    if (!cleanQuestion || isLoading) return;
     const userMessage: ChatMessage = { id: nextId.current++, role: "user", text: cleanQuestion };
-    const assistantMessage: ChatMessage = { id: nextId.current++, role: "assistant", ...answer };
-    setMessages((current) => [...current, userMessage, assistantMessage]);
+    const history = [...messages, userMessage].slice(-10).map(({ role, text }) => ({ role, content: text }));
+    setMessages((current) => [...current, userMessage]);
     setInput("");
+    setIsLoading(true);
+    stopSpeaking();
+    let answer: AssistantAnswer = answerQuestion(cleanQuestion);
+    try {
+      const response = await fetch("/api/assistant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history }),
+      });
+      const result = await response.json() as AssistantAnswer & { error?: string };
+      if (!response.ok || !result.text) throw new Error(result.error);
+      answer = result;
+    } catch {
+      // The deterministic product assistant remains available during network/model outages.
+    }
+    const assistantMessage: ChatMessage = { id: nextId.current++, role: "assistant", ...answer };
+    setMessages((current) => [...current, assistantMessage]);
+    setIsLoading(false);
     speak(answer.text);
   };
 
@@ -118,6 +136,7 @@ export default function DemlabAI() {
                 </div>
               </div>
             ))}
+            {isLoading && <div className="w-fit rounded-2xl border border-[#3e2315] bg-[#21140d] px-3.5 py-2.5 text-xs text-[#c6ad97]">DEMLAB AI yanıtlıyor...</div>}
             <div ref={scrollEnd} />
           </div>
 
@@ -130,7 +149,7 @@ export default function DemlabAI() {
           <form onSubmit={handleSubmit} className="p-3 border-t border-[#3e2315] bg-[#0d0704] flex gap-2">
             <label htmlFor="demlab-ai-input" className="sr-only">DEMLAB asistana sorunuz</label>
             <input id="demlab-ai-input" value={input} onChange={(event) => setInput(event.target.value)} maxLength={500} placeholder="Örn: 10 litre fiyatı..." className="flex-1 min-w-0 text-xs rounded-xl border border-[#442616] px-3 py-2.5 bg-[#180d07] text-[#fff5ea] outline-none focus:border-[#e59840]" />
-            <button type="submit" disabled={!input.trim()} className="btn-amber disabled:opacity-40 px-3.5 rounded-xl" aria-label="Soruyu gönder"><Send className="w-4 h-4" /></button>
+            <button type="submit" disabled={!input.trim() || isLoading} className="btn-amber disabled:opacity-40 px-3.5 rounded-xl" aria-label="Soruyu gönder"><Send className="w-4 h-4" /></button>
           </form>
           <a href={`${companyInfo.whatsappUrl}?text=${encodeURIComponent("Merhaba, DEMLAB ekibinden destek almak istiyorum.")}`} target="_blank" rel="noopener noreferrer" className="py-2 px-4 bg-[#160c07] text-[10px] text-[#a98f7b] hover:text-[#f3bd68] flex items-center justify-center gap-1.5"><MessageCircle className="w-3 h-3" />İnsan desteği için WhatsApp&apos;a geç</a>
         </section>
