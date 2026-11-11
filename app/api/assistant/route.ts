@@ -34,7 +34,8 @@ export async function POST(request: Request) {
       temperature: 0.2,
     });
     return NextResponse.json({ text: result.text, source: "model" });
-  } catch {
-    return NextResponse.json({ ...answerQuestion(last.content), source: "local" });
+  } catch (error) {
+    const modelReason = error instanceof Error ? `${error.name}: ${error.message}`.slice(0, 300) : "unknown";
+    return NextResponse.json({ ...answerQuestion(last.content), source: "local", modelReason });
   }
 }

@@ -9,7 +9,9 @@ export async function GET() {
     await db.execute(sql`select 1`);
     return NextResponse.json({ status: "ok", database: "up" });
   } catch (error) {
-    const reason = error instanceof Error ? error.message.replace(/(password=|:\/\/)[^\s]+/gi, "$1[redacted]").slice(0, 240) : "unknown";
+    const cause = error && typeof error === "object" && "cause" in error ? error.cause : null;
+    const rawReason = cause instanceof Error ? cause.message : error instanceof Error ? error.message : "unknown";
+    const reason = rawReason.replace(/(password=|:\/\/)[^\s]+/gi, "$1[redacted]").slice(0, 240);
     return NextResponse.json(
       { status: "degraded", database: "down", reason },
       { status: 503 },
