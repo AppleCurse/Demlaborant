@@ -6,6 +6,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "İletişim & Atölye Siparişi | DEMLAB Zanaat & Fermantasyon Laboratuvarı",
   description: "%96 Zanaat çözeltisi, meşe fıçı ekstraksiyonu ve laboratuvar hammaddeleri sipariş ve teknik danışmanlık.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

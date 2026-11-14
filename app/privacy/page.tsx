@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni & Gizlilik Politikası | DEMLAB",
   description: "6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca aydınlatma metni ve kurumsal gizlilik politikası.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

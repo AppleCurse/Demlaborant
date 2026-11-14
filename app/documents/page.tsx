@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Teknik Belgeler & Analiz Sertifikaları (CoA / TDS / SDS) | DEMLAB",
   description: "Özel fermantasyon çözeltileri ve laboratuvar kimyasalları için resmi Analiz Sertifikaları (CoA), Teknik Veri Formları (TDS) ve Güvenlik Bilgi Formları (SDS).",
+  alternates: {
+    canonical: "/documents",
+  },
 };
 
 export default function DocumentsPage() {

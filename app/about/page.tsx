@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Hakkımızda & Zanaat Felsefemiz | DEMLAB",
   description: "DEMLAB Zanaat & Fermantasyon Laboratuvarı A.Ş. kuruluş hikayesi, meşe fıçı maserasyon standartları ve analitik çözelti felsefesi.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
