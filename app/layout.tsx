@@ -4,9 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
-import DemlabAI from "@/components/DemlabAI";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import CookieBanner from "@/components/CookieBanner";
-import { Analytics } from "@vercel/analytics/next";
 
 const SITE_TITLE = "DEMLAB | Zanaat, Fermantasyon & Ekstraksiyon Laboratuvarı";
 const SITE_DESCRIPTION =
@@ -52,10 +51,9 @@ export default function RootLayout({
           <Header />
           <CartDrawer />
           <div className="flex-1">{children}</div>
-          <DemlabAI />
+          <WhatsAppButton />
           <CookieBanner />
           <Footer />
-          <Analytics />
         </CartProvider>
       </body>
     </html>

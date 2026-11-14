@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
@@ -17,6 +18,12 @@ import {
   Clock,
   Zap
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   const featuredProduct = products.find((p) => p.slug === "demlab-96-cozelti-5l") || products[0];
