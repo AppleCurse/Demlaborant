@@ -1,16 +1,14 @@
 import type { NextConfig } from "next";
 
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-
 const nextConfig: NextConfig = {
-  output: isGithubActions ? "export" : undefined,
-  basePath: isGithubActions ? "/Demlaborant" : "",
   images: {
     unoptimized: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Vercel'de basePath olmazsa asset'ler kk dizinden yuklenir.
+  // Eger GitHub Pages'e de deploy edilecekse oradaki build scriptine ozel eklenmeli.
 };
 
 export default nextConfig;
