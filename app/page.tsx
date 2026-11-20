@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { products } from "@/data/products";
 import { companyInfo } from "@/data/company";
+import HomepageVisuals from "@/components/HomepageVisuals";
 import ProductCard from "@/components/ProductCard";
 import InquiryForm from "@/components/InquiryForm";
 import FAQSection from "@/components/FAQSection";
@@ -142,6 +143,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <HomepageVisuals />
 
       {/* 2. Zanaat Değerleri (Meşe, Damıtma, Saflık) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
