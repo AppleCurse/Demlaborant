@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FlaskConical, MapPin, Phone, Mail, FileCheck, ShieldAlert, Award, Sparkles } from "lucide-react";
+import { FlaskConical, MapPin, MessageCircle, Mail, FileCheck, ShieldAlert, Award } from "lucide-react";
 import { companyInfo } from "@/data/company";
 
 export default function Footer() {
@@ -108,8 +108,8 @@ export default function Footer() {
             <span>{companyInfo.address}</span>
           </div>
           <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
-            <Phone className="w-4 h-4 text-[#e59840] shrink-0" />
-            <a href={`tel:${companyInfo.phone}`} className="hover:text-[#f3bd68] transition">{companyInfo.phone}</a>
+            <MessageCircle className="w-4 h-4 text-[#e59840] shrink-0" />
+            <a href={companyInfo.whatsappUrl} target="_blank" rel="noreferrer" className="hover:text-[#f3bd68] transition">WhatsApp Sipariş Hattı</a>
           </div>
           <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
             <Mail className="w-4 h-4 text-[#e59840] shrink-0" />

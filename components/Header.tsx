@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Shield, Phone, Mail, Menu, X, ChevronRight, FlaskConical, ShoppingBag, Truck, Sparkles } from "lucide-react";
+import { Shield, MessageCircle, Mail, Menu, X, ChevronRight, FlaskConical, ShoppingBag, Truck } from "lucide-react";
 import { companyInfo } from "@/data/company";
 import { useCart } from "@/context/CartContext";
 
@@ -38,9 +38,9 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4 text-[11px]">
-            <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-1 hover:text-[#f3bd68] transition">
-              <Phone className="w-3 h-3 text-[#e59840]" />
-              <span>{companyInfo.phone}</span>
+            <a href={companyInfo.whatsappUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-[#f3bd68] transition" aria-label="WhatsApp sipariş hattını aç">
+              <MessageCircle className="w-3 h-3 text-[#e59840]" />
+              <span>WhatsApp Sipariş Hattı</span>
             </a>
             <span className="text-[#4a2b19]">|</span>
             <a href={`mailto:${companyInfo.salesEmail}`} className="flex items-center gap-1 hover:text-[#f3bd68] transition">

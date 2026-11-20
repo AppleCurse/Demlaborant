@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { products } from "@/data/products";
+import { companyInfo } from "@/data/company";
 import ProductCard from "@/components/ProductCard";
 import InquiryForm from "@/components/InquiryForm";
 import FAQSection from "@/components/FAQSection";
@@ -300,7 +301,7 @@ export default function HomePage() {
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
-                href="https://wa.me/905300000000?text=Merhaba,%207/24%20acil%20kurye%20hakkinda%20bilgi%20almak%20istiyorum."
+                href={`${companyInfo.whatsappUrl}?text=${encodeURIComponent("Merhaba, 7/24 acil kurye hakkında bilgi almak istiyorum.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 btn-amber font-bold text-xs px-5 py-3 rounded-xl shadow-md"
