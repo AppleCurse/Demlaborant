@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, X, Send, ShieldCheck, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send } from "lucide-react";
 import { companyInfo } from "@/data/company";
 
 export default function WhatsAppButton() {
@@ -36,9 +36,9 @@ export default function WhatsAppButton() {
                 <span className="w-3 h-3 bg-emerald-400 border-2 border-black rounded-full absolute bottom-0 right-0 animate-pulse" />
               </div>
               <div>
-                <h4 className="font-black text-sm text-black font-serif leading-tight">DemlaB Danışma Hattı</h4>
+                <h4 className="font-black text-sm text-black font-serif leading-tight">DemlaB Sipariş Hattı</h4>
                 <p className="text-[11px] text-black/80 font-mono font-semibold">
-                  0850 512 07 37 • Canlı Destek
+                  WhatsApp • Canlı Destek
                 </p>
               </div>
             </div>
@@ -98,11 +98,11 @@ export default function WhatsAppButton() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2.5 bg-gradient-to-r from-[#b04a12] to-[#e59840] text-black font-bold py-3.5 px-5 rounded-full shadow-2xl transition transform hover:scale-105 active:scale-95 border border-white/20"
-        aria-label="WhatsApp Canlı Danışma Hattı 0850 512 07 37"
+        aria-label="WhatsApp sipariş hattını aç"
       >
         <MessageCircle className="w-5 h-5 fill-current" />
         <span className="hidden sm:inline text-xs font-mono tracking-wider font-extrabold uppercase">
-          0850 512 07 37
+          WhatsApp Sipariş
         </span>
       </button>
     </div>

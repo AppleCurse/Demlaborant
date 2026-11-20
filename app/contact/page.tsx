@@ -1,6 +1,6 @@
 import InquiryForm from "@/components/InquiryForm";
 import { companyInfo } from "@/data/company";
-import { MapPin, Phone, Mail, Clock, ShieldCheck, Truck, Sparkles } from "lucide-react";
+import { MapPin, MessageCircle, Mail, Clock, Truck, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -49,12 +49,12 @@ export default function ContactPage() {
 
               <div className="flex items-start gap-3">
                 <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0">
-                  <Phone className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-semibold text-amber-100">Doğrudan Sipariş & Danışma</div>
-                  <a href={`tel:${companyInfo.phone}`} className="text-amber-400 font-medium hover:underline block mt-0.5">
-                    {companyInfo.phone}
+                  <div className="font-semibold text-amber-100">WhatsApp Sipariş Hattı</div>
+                  <a href={companyInfo.whatsappUrl} target="_blank" rel="noreferrer" className="text-amber-400 font-medium hover:underline block mt-0.5">
+                    WhatsApp ile doğrudan yazın
                   </a>
                 </div>
               </div>
