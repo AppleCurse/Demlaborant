@@ -52,7 +52,7 @@ export default function ContactPage() {
                 <div>
                   <div className="font-semibold text-amber-100">Doğrudan Sipariş & Danışma</div>
                   <a href={`tel:${companyInfo.phoneRaw}`} className="text-amber-400 font-medium hover:underline block mt-0.5">
-                    {companyInfo.phone}
+                    Aramak için tıklayın
                   </a>
                 </div>
               </div>

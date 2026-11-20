@@ -107,7 +107,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
             <Phone className="w-4 h-4 text-[#e59840] shrink-0" />
-            <a href={`tel:${companyInfo.phoneRaw}`} className="hover:text-[#f3bd68] transition">{companyInfo.phone}</a>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="hover:text-[#f3bd68] transition">Telefonla Arayın</a>
           </div>
           <div className="flex items-center gap-2.5 text-xs text-[#c6ab95]">
             <Mail className="w-4 h-4 text-[#e59840] shrink-0" />

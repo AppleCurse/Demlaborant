@@ -1,4 +1,3 @@
-import { companyInfo } from "@/data/company";
 import { products } from "@/data/products";
 
 export type AssistantAnswer = {
@@ -76,7 +75,7 @@ export function answerQuestion(question: string): AssistantAnswer {
 
   if (/(telefon|iletişim|whatsapp|arama|numara)/.test(query)) {
     return {
-      text: `Telefon ve WhatsApp numaramız ${companyInfo.phone}. Satış ve teknik destek için bu kanallardan bize ulaşabilirsiniz.`,
+      text: `Telefon ve WhatsApp kanallarımız açık: sitedeki "Bizi Arayın" ve WhatsApp düğmeleri doğrudan bağlar. Müşteriye numara yazma, düğmelere yönlendir.`,
       href: "/contact",
       linkLabel: "İletişim Bilgileri",
     };

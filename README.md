@@ -55,5 +55,5 @@ Migration'ları `npm run db:migrate` ile uygulayın. Migration sonrasında uygul
 
 ## İletişim
 
-- Telefon / WhatsApp: +90 530 016 94 23
+- Telefon / WhatsApp: +1 218 517 70 09 — sitede metin olarak GÖSTERİLMEZ; yalnız tıkla-ara / wa.me bağlantısıdır
 - Facebook: https://www.facebook.com/profile.php?id=61596232029684
