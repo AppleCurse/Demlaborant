@@ -13,12 +13,6 @@ const visualStories = [
     title: "Berrak seri",
     detail: "Buzul berraklığında sunum",
   },
-  {
-    src: "/images/demlab-5l-jug.webp",
-    alt: "Kırmızı kapaklı DEMLAB 5 litrelik beyaz bidon",
-    title: "5 L ambalaj",
-    detail: "Atölye kullanımı için büyük boy",
-  },
 ];
 
 export default function HomepageVisuals() {
@@ -30,11 +24,11 @@ export default function HomepageVisuals() {
             DEMLAB görsel seçkisi
           </p>
           <h2 id="homepage-visuals-title" className="font-serif text-2xl font-extrabold text-[#fff5ea] sm:text-3xl">
-            Laboratuvardan sofraya, dört ayrı ifade.
+            DEMLAB’in amber ve berrak karakteri.
           </h2>
         </div>
         <p className="max-w-md text-sm leading-relaxed text-[#c6ad97]">
-          Amber karakter, berraklık ve güvenli ambalaj; DEMLAB dünyasının farklı yüzlerini keşfedin.
+          Amber ve berraklık temalı DEMLAB görsellerini keşfedin.
         </p>
       </div>
 
@@ -53,7 +47,7 @@ export default function HomepageVisuals() {
         </figcaption>
       </figure>
 
-      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
         {visualStories.map((story) => (
           <figure key={story.src} className="overflow-hidden rounded-xl border border-[#e59840]/20 bg-[#1a0f09]">
             <div className="relative aspect-[4/3] overflow-hidden">
